@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fernanda Sotero Caio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Fernanda Sotero Caio, aerospace engineering student at the University of Brasília, working on filament winding of carbon fibre composites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&display=swap">
+<style>
+/* Layout: a technical spec sheet. Left-aligned single column, mono section labels in a narrow left track,
+   and one drawn element: a rotating mandrel with a ±α helical winding. */
+:root {
+  --bg: #f4f2f5;
+  --surface: #ffffff;
+  --fg: #1e1c23;
+  --muted: #5d5866;
+  --rule: #dad4dd;
+  --accent: #8c2e57;
+  --accent-ink: #ffffff;
+  --tow: #26242c;
+  --tow-hi: #77707f;
+  --mandrel: #e4dee6;
+  --steel: #b5aeba;
+  --resin: #ecd09b;
+  --resin-deep: #c2913b;
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3rem;
+  --step-2: 1.75rem;
+  --step-hero: clamp(2.6rem, 7.2vw, 5.4rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131217; --surface: #1b1920; --fg: #ece8ef; --muted: #a59fad; --rule: #2d2a33;
+    --accent: #e183ac; --accent-ink: #1b0e15;
+    --tow: #0b0a0e; --tow-hi: #9a93a4; --mandrel: #322e38; --steel: #57525f; --resin: #6a5427; --resin-deep: #a7843f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131217; --surface: #1b1920; --fg: #ece8ef; --muted: #a59fad; --rule: #2d2a33;
+  --accent: #e183ac; --accent-ink: #1b0e15;
+  --tow: #0b0a0e; --tow-hi: #9a93a4; --mandrel: #322e38; --steel: #57525f; --resin: #6a5427; --resin-deep: #a7843f;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  font-optical-sizing: auto;
+}
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+}
+
+.mono, .label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+}
+.label { text-transform: uppercase; color: var(--muted); }
+
+/* top bar */
+.topbar {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px;
+  padding-block: 22px 0;
+}
+.topbar .mark { font-family: var(--font-display); font-weight: 700; font-variation-settings: "wdth" 112; letter-spacing: 0.01em; text-decoration: none; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.topbar nav a { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+.topbar nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero {
+  display: grid; gap: 40px;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: 56px 36px;
+}
+@media (min-width: 900px) { .hero { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: end; } }
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 118;
+  font-size: var(--step-hero);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  margin: 12px 0 22px;
+  text-wrap: balance;
+}
+.hero .lead { font-size: var(--step-1); line-height: 1.5; max-width: 34em; margin: 0 0 28px; text-wrap: pretty; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 11px 16px; border: 1.5px solid var(--fg); border-radius: 3px;
+  text-decoration: none; color: var(--fg); background: transparent; cursor: pointer;
+}
+.btn:hover { color: var(--accent); border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); color: var(--accent-ink); }
+
+/* spec block, like a drawing title block */
+.spec { margin: 0; border-top: 2px solid var(--fg); }
+.spec div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.spec dt { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.spec dd { margin: 0; font-size: 0.98rem; line-height: 1.45; min-width: 0; }
+
+/* mandrel figure */
+.figure { margin: 0 0 8px; }
+.figure canvas { display: block; width: 100%; height: clamp(150px, 21vw, 230px); }
+.figure figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding-top: 10px; border-top: 1px solid var(--rule); color: var(--muted); }
+
+/* sections */
+section { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px 40px; padding-block: 44px; border-top: 1px solid var(--rule); }
+@media (min-width: 820px) { section { grid-template-columns: 190px minmax(0, 1fr); } }
+section > .label { padding-top: 0.55em; }
+section h2 {
+  font-family: var(--font-display); font-weight: 700; font-variation-settings: "wdth" 108;
+  font-size: var(--step-2); line-height: 1.15; margin: 0 0 14px; text-wrap: balance;
+}
+section h3 { font-family: var(--font-display); font-weight: 650; font-variation-settings: "wdth" 100; font-size: 1.12rem; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; }
+section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
+.content { min-width: 0; }
+
+.pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 22px; }
+@media (min-width: 680px) { .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.study { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+.study p { margin: 0; font-size: 0.98rem; }
+.study .label { color: var(--accent); }
+.tools { margin-top: 18px; color: var(--muted); }
+
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.pubs li { padding: 16px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 4px; }
+.pubs li:first-child { padding-top: 4px; }
+.pubs .t { font-family: var(--font-display); font-weight: 600; font-variation-settings: "wdth" 100; font-size: 1.08rem; line-height: 1.35; }
+.pubs .v { color: var(--muted); font-size: 0.95rem; }
+
+.entries { display: grid; gap: 22px; }
+.entry { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px 24px; }
+@media (min-width: 680px) { .entry { grid-template-columns: minmax(0, 1fr) auto; } .entry .when { grid-column: 2; grid-row: 1; text-align: right; } }
+.entry .when { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.entry p { margin: 4px 0 0; font-size: 0.98rem; }
+.entry .where { color: var(--accent); font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.04em; }
+
+.skills { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
+@media (min-width: 620px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; } }
+.skills div { padding: 10px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
+.skills dt { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.skills dd { margin: 2px 0 0; }
+
+.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 65ch; }
+.plain li::marker { color: var(--accent); }
+
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 8px; }
+.email { font-family: var(--font-mono); font-size: 1rem; user-select: all; overflow-wrap: anywhere; }
+.copy-state { color: var(--muted); font-family: var(--font-mono); font-size: var(--step--1); min-height: 1.2em; }
+
+/* winding-angle control */
+.alpha-control { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.alpha-control input[type="range"] { width: min(260px, 58vw); accent-color: var(--accent); }
+.alpha-control output { color: var(--fg); font-variant-numeric: tabular-nums; min-width: 4.5em; }
+
+/* process diagram */
+.diagram { margin: 28px 0 8px; }
+.diagram .scroll { overflow-x: auto; }
+.diagram svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.diagram figcaption { margin-top: 10px; color: var(--muted); font-size: 0.95rem; max-width: 65ch; }
+.dg-none { fill: none; }
+.dg-line { fill: none; stroke: var(--fg); stroke-width: 1.5; }
+.dg-head { fill: var(--fg); }
+.dg-tow { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linejoin: round; }
+.dg-spool { fill: var(--surface); stroke: var(--fg); stroke-width: 1.5; }
+.dg-hub { fill: var(--tow); }
+.dg-roller { fill: var(--steel); stroke: var(--fg); stroke-width: 1.5; }
+.dg-trough { fill: none; stroke: var(--fg); stroke-width: 2; }
+.dg-resin { fill: var(--resin); stroke: var(--resin-deep); stroke-width: 1; }
+.dg-steel { fill: var(--steel); stroke: var(--fg); stroke-width: 1.2; }
+.dg-mandrel { fill: var(--mandrel); }
+.dg-outline { fill: none; stroke: var(--fg); stroke-width: 1.5; }
+.dg-hatch-a { stroke: var(--tow-hi); stroke-width: 4; }
+.dg-hatch-b { stroke: var(--tow); stroke-width: 4; }
+.dg-center { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 14 4 3 4; }
+.dg-carriage { fill: var(--surface); stroke: var(--fg); stroke-width: 1.5; }
+.dg-eye { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+.dg-alpha { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.dg-label { fill: var(--fg); font-family: var(--font-mono); font-size: 15px; font-weight: 500; }
+.dg-param { fill: var(--accent); font-family: var(--font-mono); font-size: 15px; font-weight: 500; }
+.dg-halo { paint-order: stroke; stroke: var(--mandrel); stroke-width: 5px; stroke-linejoin: round; }
+
+/* small schematics in the study cards */
+.mini { display: block; width: 100%; height: auto; max-height: 124px; }
+.mn-resin { fill: var(--resin); stroke: var(--resin-deep); stroke-width: 1.2; }
+.mn-fibre { fill: var(--tow); }
+.mn-void { fill: var(--surface); stroke: var(--resin-deep); stroke-width: 0.8; }
+.mn-top { fill: var(--surface); stroke: var(--fg); stroke-width: 1.2; }
+.mn-face { fill: var(--mandrel); stroke: var(--fg); stroke-width: 1.2; }
+.mn-end { fill: var(--steel); stroke: var(--fg); stroke-width: 1.2; }
+.mn-path { fill: none; stroke: var(--accent); stroke-width: 1.8; }
+.mn-pin { fill: var(--fg); }
+.mn-center { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 10 3 2 3; }
+.study .mini-cap { margin: 0 0 6px; color: var(--muted); font-size: 0.75rem; }
+
+/* timeline */
+.timeline { margin: 6px 0 28px; }
+.tl-box { min-height: 250px; }
+.tl-box svg { display: block; width: 100%; height: auto; }
+.timeline figcaption { color: var(--muted); margin-top: 6px; }
+.tl-grid { stroke: var(--rule); stroke-width: 1; }
+.tl-year { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
+.tl-label { fill: var(--fg); font-family: var(--font-mono); font-size: 12px; }
+.tl-edu { fill: var(--fg); }
+.tl-res { fill: var(--accent); }
+.tl-plan { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.tl-event { fill: var(--accent); }
+.tl-today { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 2 3; }
+.tl-today-label { fill: var(--accent); font-family: var(--font-mono); font-size: 11px; }
+
+/* photos */
+.photos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin: 26px 0 0; }
+@media (min-width: 620px) { .photos.two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.photos.portrait { max-width: 640px; }
+.photos img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; background: var(--mandrel); }
+.photos.portrait img { aspect-ratio: 3 / 4; }
+.photo-caption { margin: 8px 0 0; color: var(--muted); }
+.single { margin: 14px 0 0; max-width: 520px; }
+.single img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; background: var(--mandrel); }
+.thumb { display: inline-flex; flex-direction: column; gap: 6px; margin-top: 10px; text-decoration: none; color: var(--muted); }
+.thumb img { display: block; width: 220px; max-width: 100%; height: auto; aspect-ratio: 1600 / 1268; border: 1px solid var(--rule); border-radius: 2px; }
+.thumb:hover { color: var(--accent); }
+
+footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="topbar">
+    <a class="mark" href="#top">F. Sotero Caio</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <div class="label">Aerospace engineering · University of Brasília</div>
+        <h1>Fernanda Sotero Caio</h1>
+        <p class="lead">I work on filament winding of carbon fibre composites: how winding angle, pretension and resin volume affect the microstructure and strength of the part, and how to generate the machine path that lays each tow.</p>
+        <div class="actions">
+          <a class="btn primary" href="CV_Fernanda_Sotero_Caio.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          <a class="btn" href="https://www.linkedin.com/in/fernanda-sotero-caio/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+      <dl class="spec" aria-label="Summary">
+        <div><dt>Degree</dt><dd>B.Sc. in Aerospace Engineering, University of Brasília (UnB)</dd></div>
+        <div><dt>Graduation</dt><dd>Expected end of 2027</dd></div>
+        <div><dt>Laboratory</dt><dd>Aerospace Structures and Materials Laboratory (LEMA), since 2025</dd></div>
+        <div><dt>Process</dt><dd>Filament winding, carbon fibre / epoxy</dd></div>
+        <div><dt>Based in</dt><dd>Brasília, Brazil</dd></div>
+      </dl>
+    </div>
+
+    <figure class="figure">
+      <canvas id="mandrel" aria-label="Drawing of a rotating mandrel with carbon fibre tows wound at plus and minus alpha" role="img"></canvas>
+      <figcaption>
+        <div class="alpha-control">
+          <label for="alpha" class="label">Winding angle</label>
+          <input type="range" id="alpha" min="10" max="80" step="1" value="32" aria-describedby="alpha-regime">
+          <output id="alpha-out" for="alpha" class="mono">α = 32°</output>
+        </div>
+        <span class="mono" id="alpha-regime">Helical winding: crossing ±α tows form the diamond pattern</span>
+      </figcaption>
+    </figure>
+
+    <section id="research">
+      <div class="label">Research</div>
+      <div class="content">
+        <h2>Filament winding at LEMA</h2>
+        <p>At the Aerospace Structures and Materials Laboratory of the University of Brasília, I work across the filament winding process: CAD modelling of components and mandrels, winding-path generation, manufacturing, material characterisation and structural analysis.</p>
+        <figure class="diagram">
+          <div class="scroll">
+            <svg viewBox="0 0 900 310" role="img" aria-labelledby="dg-title">
+              <title id="dg-title">Schematic of wet filament winding: creel, tensioner, resin bath, carriage and rotating mandrel</title>
+              <defs>
+                <marker id="dg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dg-head"/></marker>
+                <pattern id="dg-hatch-a" width="13" height="13" patternUnits="userSpaceOnUse" patternTransform="rotate(-32)"><rect width="13" height="13" class="dg-none"/><line x1="0" y1="6.5" x2="13" y2="6.5" class="dg-hatch-a"/></pattern>
+                <pattern id="dg-hatch-b" width="13" height="13" patternUnits="userSpaceOnUse" patternTransform="rotate(32)"><rect width="13" height="13" class="dg-none"/><line x1="0" y1="6.5" x2="13" y2="6.5" class="dg-hatch-b"/></pattern>
+              </defs>
+
+              <path class="dg-tow" d="M75 80 L152 110 M75 135 L152 112 M75 190 L152 114"/>
+              <path class="dg-tow" d="M152 112 L165 89 L195 151 L225 89 L330 192 L340 192 L428 118 L668 186 L672 141"/>
+
+              <circle cx="55" cy="80" r="20" class="dg-spool"/><circle cx="55" cy="80" r="7" class="dg-hub"/>
+              <circle cx="55" cy="135" r="20" class="dg-spool"/><circle cx="55" cy="135" r="7" class="dg-hub"/>
+              <circle cx="55" cy="190" r="20" class="dg-spool"/><circle cx="55" cy="190" r="7" class="dg-hub"/>
+              <text x="55" y="240" class="dg-label" text-anchor="middle">Creel</text>
+
+              <circle cx="165" cy="100" r="11" class="dg-roller"/>
+              <circle cx="195" cy="140" r="11" class="dg-roller"/>
+              <circle cx="225" cy="100" r="11" class="dg-roller"/>
+              <text x="195" y="195" class="dg-label" text-anchor="middle">Tensioner</text>
+              <text x="195" y="215" class="dg-param" text-anchor="middle">pretension</text>
+
+              <rect x="272" y="166" width="126" height="34" class="dg-resin"/>
+              <path class="dg-trough" d="M270 150 L270 202 L400 202 L400 150"/>
+              <circle cx="335" cy="182" r="10" class="dg-roller"/>
+              <rect x="420" y="106" width="14" height="22" class="dg-steel"/>
+              <text x="335" y="232" class="dg-label" text-anchor="middle">Resin bath</text>
+              <text x="335" y="252" class="dg-param" text-anchor="middle">resin volume</text>
+
+              <rect x="530" y="92" width="30" height="16" class="dg-steel"/>
+              <rect x="840" y="92" width="30" height="16" class="dg-steel"/>
+              <rect x="560" y="60" width="280" height="80" class="dg-mandrel"/>
+              <rect x="560" y="60" width="280" height="80" fill="url(#dg-hatch-a)"/>
+              <rect x="560" y="60" width="280" height="80" fill="url(#dg-hatch-b)"/>
+              <rect x="560" y="60" width="280" height="80" class="dg-outline"/>
+              <line class="dg-center" x1="508" y1="100" x2="892" y2="100"/>
+              <line class="dg-alpha" x1="600" y1="100" x2="645.8" y2="71.4"/>
+              <path class="dg-alpha" d="M632 100 A 32 32 0 0 0 627.1 83"/>
+              <text x="636" y="95" class="dg-param dg-halo">α</text>
+              <path class="dg-line" d="M872 72 A 28 28 0 0 1 872 128" marker-end="url(#dg-arrow)"/>
+              <text x="560" y="44" class="dg-label">Mandrel <tspan class="dg-param">rotation ω</tspan></text>
+
+              <line class="dg-line" x1="520" y1="236" x2="880" y2="236"/>
+              <rect x="640" y="204" width="60" height="30" class="dg-carriage"/>
+              <line class="dg-line" x1="670" y1="204" x2="670" y2="193"/>
+              <circle cx="670" cy="188" r="5" class="dg-eye"/>
+              <line class="dg-line" x1="614" y1="254" x2="726" y2="254" marker-start="url(#dg-arrow)" marker-end="url(#dg-arrow)"/>
+              <text x="670" y="282" class="dg-label" text-anchor="middle">Carriage</text>
+              <text x="670" y="302" class="dg-param" text-anchor="middle">traverse speed v</text>
+
+              <text x="892" y="274" class="dg-label" text-anchor="end">Winding angle</text>
+              <text x="892" y="296" class="dg-param" text-anchor="end">tan α = ωr / v</text>
+            </svg>
+          </div>
+          <figcaption>Schematic of wet filament winding. The parameters I study are set at different points of the line: pretension at the tensioner, resin volume at the resin bath, and the winding angle α by the ratio between the mandrel surface speed ωr and the carriage speed v.</figcaption>
+        </figure>
+        <div class="pair">
+          <article class="study">
+            <svg class="mini" viewBox="0 0 260 110" role="img" aria-label="Schematic cross-section of an impregnated carbon fibre tow">
+              <ellipse class="mn-resin" cx="130" cy="55" rx="116" ry="45"/>
+              <g id="tow-fibres"></g>
+            </svg>
+            <p class="mini-cap mono">Schematic tow section: fibres, resin and voids</p>
+            <div class="label">Process and properties</div>
+            <h3>Winding parameters, microstructure and strength</h3>
+            <p>Measuring winding angle, pretension and resin volume, and characterising how they affect the microstructure and tensile strength of consolidated, impregnated carbon fibre tows.</p>
+          </article>
+          <article class="study">
+            <svg class="mini" viewBox="0 0 260 110" role="img" aria-label="Schematic of a rectangular mandrel with a pin-ring at each end"><line class="mn-center" x1="14" y1="56" x2="252" y2="56"/><polygon class="mn-top" points="46,34 214,34 226,24 58,24"/><rect class="mn-face" x="46" y="34" width="168" height="44"/><polygon class="mn-end" points="214,34 226,24 226,68 214,78"/><line class="mn-path" x1="36" y1="33.5" x2="238" y2="41.0"/><line class="mn-path" x1="36" y1="41.0" x2="238" y2="33.5"/><line class="mn-path" x1="36" y1="48.5" x2="238" y2="56.0"/><line class="mn-path" x1="36" y1="56.0" x2="238" y2="48.5"/><line class="mn-path" x1="36" y1="63.5" x2="238" y2="71.0"/><line class="mn-path" x1="36" y1="71.0" x2="238" y2="63.5"/><circle class="mn-pin" cx="36" cy="26.0" r="2.2"/><circle class="mn-pin" cx="36" cy="33.5" r="2.2"/><circle class="mn-pin" cx="36" cy="41.0" r="2.2"/><circle class="mn-pin" cx="36" cy="48.5" r="2.2"/><circle class="mn-pin" cx="36" cy="56.0" r="2.2"/><circle class="mn-pin" cx="36" cy="63.5" r="2.2"/><circle class="mn-pin" cx="36" cy="71.0" r="2.2"/><circle class="mn-pin" cx="36" cy="78.5" r="2.2"/><circle class="mn-pin" cx="36" cy="86.0" r="2.2"/><circle class="mn-pin" cx="238" cy="26.0" r="2.2"/><circle class="mn-pin" cx="238" cy="33.5" r="2.2"/><circle class="mn-pin" cx="238" cy="41.0" r="2.2"/><circle class="mn-pin" cx="238" cy="48.5" r="2.2"/><circle class="mn-pin" cx="238" cy="56.0" r="2.2"/><circle class="mn-pin" cx="238" cy="63.5" r="2.2"/><circle class="mn-pin" cx="238" cy="71.0" r="2.2"/><circle class="mn-pin" cx="238" cy="78.5" r="2.2"/><circle class="mn-pin" cx="238" cy="86.0" r="2.2"/></svg>
+            <p class="mini-cap mono">Schematic: rectangular mandrel with pin-rings at both ends</p>
+            <div class="label">Machine path</div>
+            <h3>Winding rectangular tubes</h3>
+            <p>A simplified analytical solution for generating the machine path when winding rectangular tubes at small winding angles, using pin-rings.</p>
+          </article>
+        </div>
+        <p class="tools mono">CATIA · Fusion 360 · AutoCAD · Ansys Mechanical and APDL · MATLAB · Mathcad</p>
+        <div class="photos two">
+          <img src="img/lema-winding-1.jpg" alt="Fernanda working on the filament winding machine at the LEMA laboratory" width="1280" height="960" loading="lazy">
+          <img src="img/lema-winding-2.jpg" alt="Fernanda handling carbon fibre tow on the filament winding machine" width="1280" height="960" loading="lazy">
+        </div>
+        <p class="photo-caption mono">Working on the filament winding machine at LEMA, University of Brasília</p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="label">Publications</div>
+      <div class="content">
+        <h2>Conference papers</h2>
+        <p>Two extended abstracts presented at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, in August 2026.</p>
+        <ul class="pubs">
+          <li>
+            <span class="t">Influence of Filament Winding Parameters on the Microstructure and Tensile Strength of Consolidated and Impregnated Carbon Fiber Tows</span>
+            <span class="v mono">BCCM8 · Extended abstract · August 2026</span>
+          </li>
+          <li>
+            <span class="t">A Simplified Analytical Solution for the Machine Path Generation in Filament Winding of Rectangular Tubes</span>
+            <span class="v mono">BCCM8 · Extended abstract · August 2026</span>
+          </li>
+        </ul>
+        <div class="photos two portrait">
+          <img src="img/bccm8-1.jpg" alt="Fernanda on stage at the 8th Brazilian Conference on Composite Materials" width="960" height="1280" loading="lazy">
+          <img src="img/bccm8-2.jpg" alt="Fernanda presenting her work at BCCM8" width="960" height="1280" loading="lazy">
+        </div>
+        <p class="photo-caption mono">Presenting at BCCM8, Foz do Iguaçu, August 2026</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="label">Projects</div>
+      <div class="content">
+        <h2>Other work</h2>
+        <div class="entries">
+          <div class="entry">
+            <div>
+              <h3>Filament-wound drone structure</h3>
+              <div class="where">University extension project · UnB</div>
+              <p>Feasibility study of a filament-wound selective-spraying structure for a multirotor drone. I work on the filament winding of the structure and on its structural calculations.</p>
+            </div>
+            <div class="when mono">Ongoing</div>
+          </div>
+          <div class="entry">
+            <div>
+              <h3>Composite components with LabTelecom</h3>
+              <div class="where">Telecommunications Laboratory · UnB</div>
+              <p>Partnership with the Telecommunications Laboratory to produce components in composite materials.</p>
+              <figure class="single">
+                <img src="img/vna.jpg" alt="Fernanda connecting a component to a vector network analyser" width="1280" height="960" loading="lazy">
+                <figcaption class="photo-caption mono">Measuring with a vector network analyser (VNA)</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="entry">
+            <div>
+              <h3>Compact stars</h3>
+              <div class="where">Undergraduate research scholarship · UnB</div>
+              <p>Astrophysics project on white dwarfs and neutron stars: fermion degeneracy pressure and the Chandrasekhar mass limit.</p>
+            </div>
+            <div class="when mono">2023 – 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <div class="label">Teaching</div>
+      <div class="content">
+        <h2>Teaching and outreach</h2>
+        <p>Undergraduate teaching assistant at the University of Brasília in Aerospace Structural Mechanics, Calculus I, Calculus III and Physics I, holding office hours for students.</p>
+        <ul class="plain">
+          <li><strong>Exploring Thermofluids Engineering and Competition Vehicles</strong>, a course for university students (two editions).</li>
+          <li><strong>Pre-Calculus</strong> at the Faculty of Science and Technology in Engineering (FCTE/UnB), second semester of 2023.</li>
+          <li><strong>School outreach</strong>: FCTE's participation in the Leonardo da Vinci School careers fair, and the reception of Federal District school students at the Gama campus.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="label">Skills</div>
+      <div class="content">
+        <h2>Tools and languages</h2>
+        <dl class="skills">
+          <div><dt>CAD</dt><dd>CATIA, Fusion 360, AutoCAD</dd></div>
+          <div><dt>Finite element analysis</dt><dd>Ansys Mechanical, Ansys APDL</dd></div>
+          <div><dt>Computing</dt><dd>MATLAB, Mathcad, Scilab</dd></div>
+          <div><dt>Manufacturing</dt><dd>Filament winding, composites, CNC milling, 3D printing</dd></div>
+          <div><dt>Documents</dt><dd>LaTeX, Mendeley</dd></div>
+          <div><dt>Languages</dt><dd>Portuguese (native), English (fluent), Spanish (intermediate), French (basic)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="label">Education</div>
+      <div class="content">
+        <h2>Education</h2>
+        <figure class="timeline">
+          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship 2023 to 2024, LEMA from 2025, BCCM8 presentations in August 2026."></div>
+          <figcaption class="mono">To scale by year. Dashed: expected, up to graduation at the end of 2027.</figcaption>
+        </figure>
+        <div class="entries">
+          <div class="entry">
+            <div>
+              <h3>B.Sc. in Aerospace Engineering</h3>
+              <div class="where">University of Brasília (UnB), Brazil</div>
+              <p>Five-year programme, expected to be completed by the end of 2027.</p>
+            </div>
+            <div class="when mono">2022 – 2027</div>
+          </div>
+          <div class="entry">
+            <div>
+              <h3>U.S. High School Diploma</h3>
+              <div class="where">Mizzou K-12 Online, University of Missouri, USA</div>
+              <p>Online programme combining liberal arts and STEAM coursework, built around research, discussion and project work on global issues.</p>
+              <a class="thumb" href="img/diploma.jpg" target="_blank" rel="noopener">
+                <img src="img/diploma.jpg" alt="University of Missouri High School diploma awarded to Fernanda Queiroz Sotero Caio" width="1600" height="1268" loading="lazy">
+                <span class="mono">View diploma (full size)</span>
+              </a>
+            </div>
+            <div class="when mono">2016 – 2020</div>
+          </div>
+          <div class="entry">
+            <div>
+              <h3>English Immersion Programme</h3>
+              <div class="where">California State University, Long Beach, USA</div>
+            </div>
+            <div class="when mono">2018</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outside">
+      <div class="label">Outside the lab</div>
+      <div class="content">
+        <ul class="plain">
+          <li><strong>Roller skating</strong>: regional championships since 2024, competing in two to three categories, with gold and silver medals.</li>
+          <li><strong>Artistic swimming</strong>: two gold medals at the São Paulo Opening in 2019, in the quartet and duet events.</li>
+          <li><strong>Model United Nations</strong>: World Health Organization (WHO) committee simulations.</li>
+          <li><strong>Piano</strong>: ongoing lessons, with two recitals a year.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="label">Contact</div>
+      <div class="content">
+        <h2>Get in touch</h2>
+        <div class="contact-row">
+          <span class="email" id="email">nandacaio100@gmail.com</span>
+          <button class="btn" type="button" id="copy-email">Copy email</button>
+          <a class="btn" href="https://www.linkedin.com/in/fernanda-sotero-caio/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="copy-state" id="copy-state" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mono">
+    <span>© 2026 Fernanda Sotero Caio</span>
+    <span>Brasília, Brazil</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  /* copy email */
+  var btn = document.getElementById('copy-email');
+  var state = document.getElementById('copy-state');
+  var email = document.getElementById('email');
+  function selectEmail() {
+    var r = document.createRange(); r.selectNodeContents(email);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  btn.addEventListener('click', function () {
+    var text = email.textContent.trim();
+    try {
+      navigator.clipboard.writeText(text).then(function () { state.textContent = 'Copied.'; },
+        function () { selectEmail(); state.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.'; });
+    } catch (e) { selectEmail(); state.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.'; }
+  });
+
+  /* rotating mandrel with a ±alpha helical winding */
+  var canvas = document.getElementById('mandrel');
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var colors = {};
+  var phase = 0.6, running = false, visible = true, last = 0;
+  var ALPHA = 32 * Math.PI / 180;
+  var alphaInput = document.getElementById('alpha');
+  var alphaOut = document.getElementById('alpha-out');
+  var regime = document.getElementById('alpha-regime');
+  function setAlpha() {
+    var d = +alphaInput.value;
+    ALPHA = d * Math.PI / 180;
+    alphaOut.textContent = 'α = ' + d + '°';
+    regime.textContent = d < 25 ? 'Low angle: tows run close to the mandrel axis'
+      : d >= 65 ? 'High angle: approaching hoop winding'
+      : 'Helical winding: crossing ±α tows form the diamond pattern';
+    draw();
+  }
+  alphaInput.addEventListener('input', setAlpha);
+  var CIRCUITS = 11;
+
+  function readColors() {
+    var cs = getComputedStyle(document.documentElement);
+    ['--tow', '--tow-hi', '--mandrel', '--steel', '--muted', '--accent', '--fg'].forEach(function (k) {
+      colors[k] = cs.getPropertyValue(k).trim();
+    });
+  }
+  function hexToRgb(h) {
+    h = h.replace('#', '');
+    if (h.length === 3) h = h.split('').map(function (c) { return c + c; }).join('');
+    var n = parseInt(h, 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function mix(a, b, t) {
+    var A = hexToRgb(a), B = hexToRgb(b);
+    return 'rgb(' + Math.round(A[0] + (B[0] - A[0]) * t) + ',' + Math.round(A[1] + (B[1] - A[1]) * t) + ',' + Math.round(A[2] + (B[2] - A[2]) * t) + ')';
+  }
+
+  function size() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw() {
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    var cy = h * 0.5;
+    var r = h * 0.33;
+    var shaft = Math.max(18, w * 0.05);
+    var x0 = shaft + 8, x1 = w - shaft - 8;
+    var narrow = w < 560;
+    if (!narrow) x1 = w - shaft - 120;   /* room for the angle key */
+
+    /* centre line: long-short chain, as on a drawing */
+    ctx.save();
+    ctx.strokeStyle = colors['--muted']; ctx.lineWidth = 1; ctx.setLineDash([14, 4, 3, 4]);
+    ctx.beginPath(); ctx.moveTo(2, cy); ctx.lineTo(narrow ? w - 2 : x1 + shaft + 6, cy); ctx.stroke();
+    ctx.restore();
+
+    /* shafts */
+    ctx.fillStyle = colors['--steel'];
+    ctx.fillRect(x0 - shaft - 6, cy - r * 0.16, shaft + 6, r * 0.32);
+    ctx.fillRect(x1, cy - r * 0.16, shaft + 6, r * 0.32);
+
+    /* mandrel body with simple cylindrical shading */
+    var g = ctx.createLinearGradient(0, cy - r, 0, cy + r);
+    g.addColorStop(0, mix(colors['--mandrel'], colors['--tow-hi'], 0.15));
+    g.addColorStop(0.35, colors['--mandrel']);
+    g.addColorStop(1, mix(colors['--mandrel'], colors['--tow'], 0.35));
+    ctx.fillStyle = g;
+    ctx.fillRect(x0, cy - r, x1 - x0, 2 * r);
+
+    /* tows: phi(x) = phi0 + s * (x - x0) * tan(alpha) / r + phase; visible where sin(phi) > 0 */
+    var k = Math.tan(ALPHA) / r;
+    var towW = Math.max(2.5, r * 0.17 * Math.cos(ALPHA) / Math.cos(32 * Math.PI / 180));
+    ctx.save();
+    ctx.beginPath(); ctx.rect(x0, cy - r, x1 - x0, 2 * r); ctx.clip();
+    ctx.lineCap = 'round';
+    var step = Math.max(0.8, Math.min(3, 0.12 / k));
+    for (var layer = 0; layer < 2; layer++) {
+      var s = layer === 0 ? -1 : 1;
+      for (var i = 0; i < CIRCUITS; i++) {
+        var phi0 = (2 * Math.PI * i) / CIRCUITS;
+        var px = null, py = null;
+        for (var x = x0; x <= x1; x += step) {
+          var phi = phi0 + s * (x - x0) * k + phase;
+          var sn = Math.sin(phi);
+          var y = cy - r * Math.cos(phi);
+          if (sn > 0.02 && px !== null) {
+            var light = Math.max(0, Math.min(1, 0.25 + 0.75 * sn * (0.6 + 0.4 * Math.cos(phi - 0.9))));
+            ctx.strokeStyle = mix(colors['--tow'], colors['--tow-hi'], light * 0.85);
+            ctx.lineWidth = towW * Math.max(0.12, sn);
+            ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(x, y); ctx.stroke();
+          }
+          if (sn > 0.02) { px = x; py = y; } else { px = null; py = null; }
+        }
+      }
+    }
+
+    ctx.restore();
+
+    /* mandrel outline */
+    ctx.strokeStyle = colors['--fg']; ctx.lineWidth = 1.25;
+    ctx.strokeRect(x0, cy - r, x1 - x0, 2 * r);
+
+    /* angle key */
+    if (!narrow) {
+      var kx = x1 + shaft + 28, ky = cy + r * 0.55, len = 72;
+      ctx.strokeStyle = colors['--muted']; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + len, ky); ctx.stroke();
+      ctx.strokeStyle = colors['--accent']; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + len * Math.cos(ALPHA), ky - len * Math.sin(ALPHA)); ctx.stroke();
+      ctx.lineWidth = 1.25;
+      ctx.beginPath(); ctx.arc(kx, ky, 34, -ALPHA, 0); ctx.stroke();
+      ctx.fillStyle = colors['--accent'];
+      ctx.font = '500 14px "IBM Plex Mono", ui-monospace, monospace';
+      ctx.fillText('α', kx + 40, ky - 8);
+      ctx.fillStyle = colors['--muted'];
+      ctx.font = '400 11px "IBM Plex Mono", ui-monospace, monospace';
+      ctx.fillText('AXIS', kx + len - 28, ky + 16);
+      ctx.fillText('TOW', kx + len * Math.cos(ALPHA) - 6, ky - len * Math.sin(ALPHA) - 8);
+    }
+  }
+
+  function frame(t) {
+    if (!running) return;
+    if (t - last > 33) { phase += 0.012; draw(); last = t; }
+    requestAnimationFrame(frame);
+  }
+  function update() {
+    var should = visible && !reduce.matches && !document.hidden;
+    if (should && !running) { running = true; requestAnimationFrame(frame); }
+    if (!should) running = false;
+  }
+
+  readColors(); size(); setAlpha();
+  window.addEventListener('resize', function () { size(); draw(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  var onTheme = function () { readColors(); draw(); };
+  if (mq.addEventListener) mq.addEventListener('change', onTheme);
+  new MutationObserver(onTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  if (reduce.addEventListener) reduce.addEventListener('change', update);
+  document.addEventListener('visibilitychange', update);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; update(); }).observe(canvas);
+  }
+  update();
+})();
+</script>
+
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+
+  /* schematic tow cross-section: hexagonal fibre packing with jitter, two voids */
+  function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  var g = document.getElementById('tow-fibres');
+  if (g) {
+    var rnd = mulberry32(11), cx = 130, cy = 55, rx = 110, ry = 39, sp = 7.4, fr = 3.0;
+    var voids = [{ x: 92, y: 47, rx: 10, ry: 5.5 }, { x: 178, y: 64, rx: 7.5, ry: 4.2 }];
+    var out = '';
+    for (var row = 0; row * sp * 0.866 <= 2 * ry; row++) {
+      var y = cy - ry + row * sp * 0.866;
+      for (var x = cx - rx + (row % 2 ? sp / 2 : 0); x <= cx + rx; x += sp) {
+        var jx = x + (rnd() - 0.5) * 1.6, jy = y + (rnd() - 0.5) * 1.6;
+        if (Math.pow((jx - cx) / rx, 2) + Math.pow((jy - cy) / ry, 2) > 1) continue;
+        var inVoid = voids.some(function (v) { return Math.pow((jx - v.x) / (v.rx + 3), 2) + Math.pow((jy - v.y) / (v.ry + 3), 2) < 1; });
+        if (inVoid || rnd() < 0.04) continue;
+        out += '<circle class="mn-fibre" cx="' + jx.toFixed(1) + '" cy="' + jy.toFixed(1) + '" r="' + fr + '"/>';
+      }
+    }
+    voids.forEach(function (v) { out += '<ellipse class="mn-void" cx="' + v.x + '" cy="' + v.y + '" rx="' + v.rx + '" ry="' + v.ry + '"/>'; });
+    g.innerHTML = out;
+  }
+
+  /* timeline, drawn to scale at the container's width */
+  var ROWS = [
+    { label: 'U.S. high school (Mizzou K-12 Online)', from: 2016, to: 2021, cls: 'tl-edu' },
+    { label: 'English immersion, CSULB', at: 2018.5 },
+    { label: 'B.Sc. Aerospace Engineering, UnB', from: 2022, to: 2028, cls: 'tl-edu', expected: true },
+    { label: 'Research scholarship: compact stars', from: 2023, to: 2025, cls: 'tl-res' },
+    { label: 'LEMA: filament winding', from: 2025, to: 'now', cls: 'tl-res' },
+    { label: 'BCCM8 presentations', at: 2026.6 }
+  ];
+  function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function renderTimeline() {
+    var box = document.getElementById('timeline');
+    if (!box) return;
+    var W = Math.max(280, Math.floor(box.clientWidth));
+    var d = new Date();
+    var now = d.getFullYear() + (d.getMonth() + d.getDate() / 31) / 12;
+    var y0 = 2016, y1 = Math.max(2028, Math.ceil(now + 0.25));
+    var padL = 4, padR = 10, top = 26, rowH = 34;
+    var H = top + ROWS.length * rowH + 26;
+    var X = function (y) { return padL + (y - y0) / (y1 - y0) * (W - padL - padR); };
+    var o = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" aria-hidden="true">';
+    for (var y = y0; y <= y1; y++) {
+      var gx = X(y).toFixed(1);
+      o += '<line class="tl-grid" x1="' + gx + '" y1="' + (top - 6) + '" x2="' + gx + '" y2="' + (H - 22) + '"/>';
+      if (W >= 560 || (y - y0) % 2 === 0) o += '<text class="tl-year" x="' + gx + '" y="' + (H - 6) + '" text-anchor="middle">' + y + '</text>';
+    }
+    ROWS.forEach(function (r, i) {
+      var base = top + i * rowH + 20;
+      var labelW = r.label.length * 7.3;
+      var start, end;
+      if (r.at !== undefined) {
+        var ex = X(r.at);
+        o += '<path class="tl-event" d="M' + (ex - 6) + ' ' + (base + 4) + ' L' + ex + ' ' + (base - 2) + ' L' + (ex + 6) + ' ' + (base + 4) + ' L' + ex + ' ' + (base + 10) + ' Z"/>';
+        start = ex - 6; end = ex + 6;
+      } else {
+        var to = r.to === 'now' ? now : r.to;
+        start = X(r.from); end = X(to);
+        var solidEnd = r.expected ? Math.min(end, X(now)) : end;
+        o += '<rect class="' + r.cls + '" x="' + start.toFixed(1) + '" y="' + base + '" width="' + Math.max(2, solidEnd - start).toFixed(1) + '" height="8" rx="1.5"/>';
+        if (r.expected && solidEnd < end) o += '<rect class="tl-plan" x="' + solidEnd.toFixed(1) + '" y="' + (base + 0.6) + '" width="' + (end - solidEnd).toFixed(1) + '" height="6.8" rx="1.5"/>';
+      }
+      var lx = start, anchor = 'start';
+      if (lx + labelW > W - 2) { lx = Math.min(W - 2, Math.max(end, labelW)); anchor = 'end'; }
+      o += '<text class="tl-label" x="' + lx.toFixed(1) + '" y="' + (base - 6) + '" text-anchor="' + anchor + '">' + esc(r.label) + '</text>';
+    });
+    var tx = X(now);
+    o += '<line class="tl-today" x1="' + tx.toFixed(1) + '" y1="' + (top - 10) + '" x2="' + tx.toFixed(1) + '" y2="' + (H - 22) + '"/>';
+    o += '<text class="tl-today-label" x="' + tx.toFixed(1) + '" y="' + (top - 14) + '" text-anchor="middle">Today</text>';
+    box.innerHTML = o + '</svg>';
+  }
+  renderTimeline();
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(renderTimeline, 120); });
+})();
+</script>
+
+</body>
+</html>
