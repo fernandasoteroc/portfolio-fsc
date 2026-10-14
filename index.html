@@ -222,6 +222,11 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 .mn-path { fill: none; stroke: var(--accent); stroke-width: 1.8; }
 .mn-pin { fill: var(--fg); }
 .mn-center { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 10 3 2 3; }
+.media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.media a { display: block; border-radius: 3px; overflow: hidden; }
+.media img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--mandrel); transition: transform 0.25s ease; }
+.media a:hover img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .media img { transition: none; } .media a:hover img { transform: none; } }
 .study .mini-cap { margin: 0 0 6px; color: var(--muted); font-size: 0.75rem; }
 
 /* timeline */
@@ -369,18 +374,21 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
         </figure>
         <div class="pair">
           <article class="study">
-            <svg class="mini" viewBox="0 0 260 110" role="img" aria-label="Schematic cross-section of an impregnated carbon fibre tow">
-              <ellipse class="mn-resin" cx="130" cy="55" rx="116" ry="45"/>
-              <g id="tow-fibres"></g>
-            </svg>
-            <p class="mini-cap mono">Schematic tow section: fibres, resin and voids</p>
+            <div class="media">
+              <a href="micro-sections.jpg" target="_blank" rel="noopener"><img src="micro-sections.jpg" alt="Optical micrograph of impregnated carbon fibre tow cross-sections" width="847" height="236"></a>
+              <a href="micro-closeup.jpg" target="_blank" rel="noopener"><img src="micro-closeup.jpg" alt="Close-up optical micrograph of a tow cross-section with voids" width="223" height="248"></a>
+            </div>
+            <p class="mini-cap mono">Optical micrographs of tow cross-sections. Select to enlarge.</p>
             <div class="label">Process and properties</div>
             <h3>Winding parameters, microstructure and strength</h3>
             <p>Measuring winding angle, pretension and resin volume, and characterising how they affect the microstructure and tensile strength of consolidated, impregnated carbon fibre tows.</p>
           </article>
           <article class="study">
-            <svg class="mini" viewBox="0 0 260 110" role="img" aria-label="Schematic of a rectangular mandrel with a pin-ring at each end"><line class="mn-center" x1="14" y1="56" x2="252" y2="56"/><polygon class="mn-top" points="46,34 214,34 226,24 58,24"/><rect class="mn-face" x="46" y="34" width="168" height="44"/><polygon class="mn-end" points="214,34 226,24 226,68 214,78"/><line class="mn-path" x1="36" y1="33.5" x2="238" y2="41.0"/><line class="mn-path" x1="36" y1="41.0" x2="238" y2="33.5"/><line class="mn-path" x1="36" y1="48.5" x2="238" y2="56.0"/><line class="mn-path" x1="36" y1="56.0" x2="238" y2="48.5"/><line class="mn-path" x1="36" y1="63.5" x2="238" y2="71.0"/><line class="mn-path" x1="36" y1="71.0" x2="238" y2="63.5"/><circle class="mn-pin" cx="36" cy="26.0" r="2.2"/><circle class="mn-pin" cx="36" cy="33.5" r="2.2"/><circle class="mn-pin" cx="36" cy="41.0" r="2.2"/><circle class="mn-pin" cx="36" cy="48.5" r="2.2"/><circle class="mn-pin" cx="36" cy="56.0" r="2.2"/><circle class="mn-pin" cx="36" cy="63.5" r="2.2"/><circle class="mn-pin" cx="36" cy="71.0" r="2.2"/><circle class="mn-pin" cx="36" cy="78.5" r="2.2"/><circle class="mn-pin" cx="36" cy="86.0" r="2.2"/><circle class="mn-pin" cx="238" cy="26.0" r="2.2"/><circle class="mn-pin" cx="238" cy="33.5" r="2.2"/><circle class="mn-pin" cx="238" cy="41.0" r="2.2"/><circle class="mn-pin" cx="238" cy="48.5" r="2.2"/><circle class="mn-pin" cx="238" cy="56.0" r="2.2"/><circle class="mn-pin" cx="238" cy="63.5" r="2.2"/><circle class="mn-pin" cx="238" cy="71.0" r="2.2"/><circle class="mn-pin" cx="238" cy="78.5" r="2.2"/><circle class="mn-pin" cx="238" cy="86.0" r="2.2"/></svg>
-            <p class="mini-cap mono">Schematic: rectangular mandrel with pin-rings at both ends</p>
+            <div class="media">
+              <a href="mandrel-pins.jpg" target="_blank" rel="noopener"><img src="mandrel-pins-tile.jpg" alt="Pin-ring on a mandrel of the winding machine" width="640" height="480"></a>
+              <a href="winding-pins.jpg" target="_blank" rel="noopener"><img src="winding-pins-tile.jpg" alt="Test winding held by a pin-ring at the end of the mandrel" width="640" height="480"></a>
+            </div>
+            <p class="mini-cap mono">Mandrel with pin-rings, and a test winding. Select to enlarge.</p>
             <div class="label">Machine path</div>
             <h3>Winding rectangular tubes</h3>
             <p>A simplified analytical solution for generating the machine path when winding rectangular tubes at small winding angles, using pin-rings.</p>
@@ -388,8 +396,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
         </div>
         <p class="tools mono">CATIA · Fusion 360 · AutoCAD · Ansys Mechanical and APDL · MATLAB · Mathcad</p>
         <div class="photos two">
-          <img src="img/lema-winding-1.jpg" alt="Fernanda working on the filament winding machine at the LEMA laboratory" width="1280" height="960" loading="lazy">
-          <img src="img/lema-winding-2.jpg" alt="Fernanda handling carbon fibre tow on the filament winding machine" width="1280" height="960" loading="lazy">
+          <img src="lema-winding-1.jpg" alt="Fernanda working on the filament winding machine at the LEMA laboratory" width="1280" height="960" loading="lazy">
+          <img src="lema-winding-2.jpg" alt="Fernanda handling carbon fibre tow on the filament winding machine" width="1280" height="960" loading="lazy">
         </div>
         <p class="photo-caption mono">Working on the filament winding machine at LEMA, University of Brasília</p>
       </div>
@@ -411,8 +419,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
           </li>
         </ul>
         <div class="photos two portrait">
-          <img src="img/bccm8-1.jpg" alt="Fernanda on stage at the 8th Brazilian Conference on Composite Materials" width="960" height="1280" loading="lazy">
-          <img src="img/bccm8-2.jpg" alt="Fernanda presenting her work at BCCM8" width="960" height="1280" loading="lazy">
+          <img src="bccm8-1.jpg" alt="Fernanda on stage at the 8th Brazilian Conference on Composite Materials" width="960" height="1280" loading="lazy">
+          <img src="bccm8-2.jpg" alt="Fernanda presenting her work at BCCM8" width="960" height="1280" loading="lazy">
         </div>
         <p class="photo-caption mono">Presenting at BCCM8, Foz do Iguaçu, August 2026</p>
       </div>
@@ -437,7 +445,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <div class="where">Telecommunications Laboratory · UnB</div>
               <p>Partnership with the Telecommunications Laboratory to produce components in composite materials.</p>
               <figure class="single">
-                <img src="img/vna.jpg" alt="Fernanda connecting a component to a vector network analyser" width="1280" height="960" loading="lazy">
+                <img src="vna.jpg" alt="Fernanda connecting a component to a vector network analyser" width="1280" height="960" loading="lazy">
                 <figcaption class="photo-caption mono">Measuring with a vector network analyser (VNA)</figcaption>
               </figure>
             </div>
@@ -504,8 +512,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <h3>U.S. High School Diploma</h3>
               <div class="where">Mizzou K-12 Online, University of Missouri, USA</div>
               <p>Online programme combining liberal arts and STEAM coursework, built around research, discussion and project work on global issues.</p>
-              <a class="thumb" href="img/diploma.jpg" target="_blank" rel="noopener">
-                <img src="img/diploma.jpg" alt="University of Missouri High School diploma awarded to Fernanda Queiroz Sotero Caio" width="1600" height="1268" loading="lazy">
+              <a class="thumb" href="diploma.jpg" target="_blank" rel="noopener">
+                <img src="diploma.jpg" alt="University of Missouri High School diploma awarded to Fernanda Queiroz Sotero Caio" width="1600" height="1268" loading="lazy">
                 <span class="mono">View diploma (full size)</span>
               </a>
             </div>
@@ -728,27 +736,6 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
 <script>
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
-
-  /* schematic tow cross-section: hexagonal fibre packing with jitter, two voids */
-  function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-  var g = document.getElementById('tow-fibres');
-  if (g) {
-    var rnd = mulberry32(11), cx = 130, cy = 55, rx = 110, ry = 39, sp = 7.4, fr = 3.0;
-    var voids = [{ x: 92, y: 47, rx: 10, ry: 5.5 }, { x: 178, y: 64, rx: 7.5, ry: 4.2 }];
-    var out = '';
-    for (var row = 0; row * sp * 0.866 <= 2 * ry; row++) {
-      var y = cy - ry + row * sp * 0.866;
-      for (var x = cx - rx + (row % 2 ? sp / 2 : 0); x <= cx + rx; x += sp) {
-        var jx = x + (rnd() - 0.5) * 1.6, jy = y + (rnd() - 0.5) * 1.6;
-        if (Math.pow((jx - cx) / rx, 2) + Math.pow((jy - cy) / ry, 2) > 1) continue;
-        var inVoid = voids.some(function (v) { return Math.pow((jx - v.x) / (v.rx + 3), 2) + Math.pow((jy - v.y) / (v.ry + 3), 2) < 1; });
-        if (inVoid || rnd() < 0.04) continue;
-        out += '<circle class="mn-fibre" cx="' + jx.toFixed(1) + '" cy="' + jy.toFixed(1) + '" r="' + fr + '"/>';
-      }
-    }
-    voids.forEach(function (v) { out += '<ellipse class="mn-void" cx="' + v.x + '" cy="' + v.y + '" rx="' + v.rx + '" ry="' + v.ry + '"/>'; });
-    g.innerHTML = out;
-  }
 
   /* timeline, drawn to scale at the container's width */
   var ROWS = [
