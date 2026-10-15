@@ -231,7 +231,7 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 
 /* timeline */
 .timeline { margin: 6px 0 28px; }
-.tl-box { min-height: 250px; }
+.tl-box { min-height: 350px; }
 .tl-box svg { display: block; width: 100%; height: auto; }
 .timeline figcaption { color: var(--muted); margin-top: 6px; }
 .tl-grid { stroke: var(--rule); stroke-width: 1; }
@@ -241,6 +241,9 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 .tl-res { fill: var(--accent); }
 .tl-plan { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 3 3; }
 .tl-event { fill: var(--accent); }
+.tl-res-soft { fill: var(--accent); fill-opacity: 0.35; }
+.tl-meta { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
+.tl-label, .tl-meta { paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
 .tl-today { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 2 3; }
 .tl-today-label { fill: var(--accent); font-family: var(--font-mono); font-size: 11px; }
 
@@ -407,15 +410,15 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="label">Publications</div>
       <div class="content">
         <h2>Conference papers</h2>
-        <p>Two extended abstracts presented at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, in August 2026.</p>
+        <p>I presented both extended abstracts orally, one as first author and one as second author, at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, 16 to 19 August 2026.</p>
         <ul class="pubs">
           <li>
             <span class="t">Influence of Filament Winding Parameters on the Microstructure and Tensile Strength of Consolidated and Impregnated Carbon Fiber Tows</span>
-            <span class="v mono">BCCM8 · Extended abstract · August 2026</span>
+            <span class="v mono">BCCM8 · Second author · Oral presentation · August 2026 · <a href="certificate-bccm8-microstructure.pdf" target="_blank" rel="noopener">Certificate (PDF)</a></span>
           </li>
           <li>
             <span class="t">A Simplified Analytical Solution for the Machine Path Generation in Filament Winding of Rectangular Tubes</span>
-            <span class="v mono">BCCM8 · Extended abstract · August 2026</span>
+            <span class="v mono">BCCM8 · First author · Oral presentation · August 2026 · <a href="certificate-bccm8-machine-path.pdf" target="_blank" rel="noopener">Certificate (PDF)</a></span>
           </li>
         </ul>
         <div class="photos two portrait">
@@ -495,8 +498,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="content">
         <h2>Education</h2>
         <figure class="timeline">
-          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), BCCM8 presentations in August 2026."></div>
-          <figcaption class="mono">To scale by year. Dashed: expected, up to graduation at the end of 2027.</figcaption>
+          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), two oral presentations at BCCM8 in August 2026."></div>
+          <figcaption class="mono">To scale by year. Light bar: before official LEMA membership. Dashed: expected, up to graduation at the end of 2027.</figcaption>
         </figure>
         <div class="entries">
           <div class="entry">
@@ -737,16 +740,21 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
 
-  /* timeline, drawn to scale at the container's width */
+  /* timeline, drawn to scale at the container's width; each row has a name above the bar and its dates below */
   var ROWS = [
-    { label: 'U.S. high school (Mizzou K-12 Online)', from: 2016, to: 2021, cls: 'tl-edu' },
-    { label: 'English immersion, CSULB', at: 2018.5 },
-    { label: 'B.Sc. Aerospace Engineering, UnB', from: 2022, to: 2028, cls: 'tl-edu', expected: true },
-    { label: 'Research scholarship: compact stars', from: 2024 + 8 / 12, to: 2025 + 9 / 12, cls: 'tl-res' },
-    { label: 'LEMA: filament winding (member since 2026)', from: 2025, to: 'now', cls: 'tl-res' },
-    { label: 'BCCM8 presentations', at: 2026.6 }
+    { label: 'U.S. high school (Mizzou K-12 Online)', meta: '2016 – 2020', segs: [[2016, 2021, 'tl-edu']] },
+    { label: 'English immersion, CSULB', meta: '2018', at: 2018.5 },
+    { label: 'B.Sc. Aerospace Engineering, UnB', meta: '2022 – end of 2027 (expected)', segs: [[2022, 'now', 'tl-edu'], ['now', 2028, 'tl-plan']] },
+    { label: 'PIBIC research scholarship: compact stars', meta: 'Sep 2024 – Sep 2025', segs: [[2024 + 8 / 12, 2025 + 9 / 12, 'tl-res']] },
+    { label: 'LEMA: filament winding', meta: 'Joined 2025 · official member since 2026', segs: [[2025, 2026, 'tl-res-soft'], [2026, 'now', 'tl-res']] },
+    { label: 'BCCM8: two oral presentations', meta: 'Aug 2026, Foz do Iguaçu', at: 2026 + 7.5 / 12 }
   ];
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function place(text, start, end, W, cw) {
+    var w = text.length * cw;
+    if (start + w <= W - 2) return { x: start, a: 'start' };
+    return { x: Math.min(W - 2, Math.max(end, w)), a: 'end' };
+  }
   function renderTimeline() {
     var box = document.getElementById('timeline');
     if (!box) return;
@@ -754,8 +762,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
     var d = new Date();
     var now = d.getFullYear() + (d.getMonth() + d.getDate() / 31) / 12;
     var y0 = 2016, y1 = Math.max(2028, Math.ceil(now + 0.25));
-    var padL = 4, padR = 10, top = 26, rowH = 34;
-    var H = top + ROWS.length * rowH + 26;
+    var padL = 4, padR = 10, top = 26, rowH = 50;
+    var H = top + ROWS.length * rowH + 22;
     var X = function (y) { return padL + (y - y0) / (y1 - y0) * (W - padL - padR); };
     var o = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" aria-hidden="true">';
     for (var y = y0; y <= y1; y++) {
@@ -763,28 +771,31 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       o += '<line class="tl-grid" x1="' + gx + '" y1="' + (top - 6) + '" x2="' + gx + '" y2="' + (H - 22) + '"/>';
       if (W >= 560 || (y - y0) % 2 === 0) o += '<text class="tl-year" x="' + gx + '" y="' + (H - 6) + '" text-anchor="middle">' + y + '</text>';
     }
+    var tx = X(now);
+    o += '<line class="tl-today" x1="' + tx.toFixed(1) + '" y1="' + (top - 10) + '" x2="' + tx.toFixed(1) + '" y2="' + (H - 22) + '"/>';
+    o += '<text class="tl-today-label" x="' + tx.toFixed(1) + '" y="' + (top - 14) + '" text-anchor="middle">Today</text>';
     ROWS.forEach(function (r, i) {
-      var base = top + i * rowH + 20;
-      var labelW = r.label.length * 7.3;
+      var base = top + i * rowH + 18;
       var start, end;
       if (r.at !== undefined) {
         var ex = X(r.at);
         o += '<path class="tl-event" d="M' + (ex - 6) + ' ' + (base + 4) + ' L' + ex + ' ' + (base - 2) + ' L' + (ex + 6) + ' ' + (base + 4) + ' L' + ex + ' ' + (base + 10) + ' Z"/>';
         start = ex - 6; end = ex + 6;
       } else {
-        var to = r.to === 'now' ? now : r.to;
-        start = X(r.from); end = X(to);
-        var solidEnd = r.expected ? Math.min(end, X(now)) : end;
-        o += '<rect class="' + r.cls + '" x="' + start.toFixed(1) + '" y="' + base + '" width="' + Math.max(2, solidEnd - start).toFixed(1) + '" height="8" rx="1.5"/>';
-        if (r.expected && solidEnd < end) o += '<rect class="tl-plan" x="' + solidEnd.toFixed(1) + '" y="' + (base + 0.6) + '" width="' + (end - solidEnd).toFixed(1) + '" height="6.8" rx="1.5"/>';
+        start = Infinity; end = -Infinity;
+        r.segs.forEach(function (sg) {
+          var a = X(sg[0] === 'now' ? now : sg[0]), b = X(sg[1] === 'now' ? now : sg[1]);
+          if (b - a < 0.5) return;
+          start = Math.min(start, a); end = Math.max(end, b);
+          if (sg[2] === 'tl-plan') o += '<rect class="tl-plan" x="' + a.toFixed(1) + '" y="' + (base + 0.6) + '" width="' + (b - a).toFixed(1) + '" height="6.8" rx="1.5"/>';
+          else o += '<rect class="' + sg[2] + '" x="' + a.toFixed(1) + '" y="' + base + '" width="' + (b - a).toFixed(1) + '" height="8" rx="1.5"/>';
+        });
       }
-      var lx = start, anchor = 'start';
-      if (lx + labelW > W - 2) { lx = Math.min(W - 2, Math.max(end, labelW)); anchor = 'end'; }
-      o += '<text class="tl-label" x="' + lx.toFixed(1) + '" y="' + (base - 6) + '" text-anchor="' + anchor + '">' + esc(r.label) + '</text>';
+      var L = place(r.label, start, end, W, 7.3);
+      o += '<text class="tl-label" x="' + L.x.toFixed(1) + '" y="' + (base - 6) + '" text-anchor="' + L.a + '">' + esc(r.label) + '</text>';
+      var M = place(r.meta, start, end, W, 6.7);
+      o += '<text class="tl-meta" x="' + M.x.toFixed(1) + '" y="' + (base + 22) + '" text-anchor="' + M.a + '">' + esc(r.meta) + '</text>';
     });
-    var tx = X(now);
-    o += '<line class="tl-today" x1="' + tx.toFixed(1) + '" y1="' + (top - 10) + '" x2="' + tx.toFixed(1) + '" y2="' + (H - 22) + '"/>';
-    o += '<text class="tl-today-label" x="' + tx.toFixed(1) + '" y="' + (top - 14) + '" text-anchor="middle">Today</text>';
     box.innerHTML = o + '</svg>';
   }
   renderTimeline();
