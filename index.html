@@ -95,10 +95,8 @@ a:hover { color: var(--accent); }
 .topbar nav a:hover { color: var(--accent); }
 
 .topbar .right { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
-.lang { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--rule); border-radius: 4px; }
-.lang button { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; background: none; border: 0; border-radius: 3px; padding: 3px 9px; color: var(--muted); cursor: pointer; }
-.lang button:hover { color: var(--accent); }
-.lang button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.lang-toggle { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.04em; color: var(--fg); background: none; border: 1.5px solid var(--fg); border-radius: 3px; padding: 6px 12px; cursor: pointer; }
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
 /* hero */
 .hero {
@@ -281,39 +279,36 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <a href="#research" data-pt="Pesquisa">Research</a>
       <a href="#publications" data-pt="Publicações">Publications</a>
       <a href="#projects" data-pt="Projetos">Projects</a>
-      <a href="#teaching" data-pt="Ensino">Teaching</a>
+      <a href="#teaching" data-pt="Monitoria">Teaching</a>
       <a href="#contact" data-pt="Contato">Contact</a>
     </nav>
-    <div class="lang" role="group" aria-label="Language / Idioma">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
-    </div>
+    <button type="button" class="lang-toggle" id="lang-toggle" lang="pt" data-pt="English version">Versão em português</button>
     </div>
   </header>
 
   <main id="top">
     <div class="hero">
       <div>
-        <div class="label" data-pt="Engenharia aeroespacial · Universidade de Brasília">Aerospace engineering · University of Brasília</div>
+        <div class="label" data-pt="Engenharia Aeroespacial · Universidade de Brasília">Aerospace engineering · University of Brasília</div>
         <h1>Fernanda Sotero Caio</h1>
-        <p class="lead" data-pt="Trabalho com bobinagem filamentar de compósitos de fibra de carbono: como o ângulo de bobinagem, a pré-tensão e o volume de resina afetam a microestrutura e a resistência da peça, e como gerar a trajetória da máquina que deposita cada cabo.">I work on filament winding of carbon fibre composites: how winding angle, pretension and resin volume affect the microstructure and strength of the part, and how to generate the machine path that lays each tow.</p>
+        <p class="lead" data-pt="Trabalho com bobinagem filamentar de compósitos de fibra de carbono. Estudo como o ângulo de bobinagem, a pré-tensão e o volume de resina influenciam a microestrutura e a resistência da peça, e como gerar a trajetória que a máquina percorre.">I work on filament winding of carbon fibre composites: how winding angle, pretension and resin volume affect the microstructure and strength of the part, and how to generate the machine path that lays each tow.</p>
         <div class="actions">
-          <a class="btn primary" href="CV_Fernanda_Sotero_Caio.pdf" target="_blank" rel="noopener" data-pt="Baixar CV (PDF)" data-pt-href="CV_Fernanda_Sotero_Caio_PT.pdf">Download CV (PDF)</a>
+          <a class="btn primary" href="CV_Fernanda_Sotero_Caio.pdf" target="_blank" rel="noopener" data-pt="Baixar currículo (PDF)" data-pt-href="CV_Fernanda_Sotero_Caio_PT.pdf">Download CV (PDF)</a>
           <a class="btn" href="https://www.linkedin.com/in/fernanda-sotero-caio/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="#contact" data-pt="Contato">Contact</a>
         </div>
       </div>
       <dl class="spec" aria-label="Summary" data-pt-aria="Resumo">
-        <div><dt data-pt="Formação">Degree</dt><dd data-pt="Bacharelado em Engenharia Aeroespacial, Universidade de Brasília (UnB)">B.Sc. in Aerospace Engineering, University of Brasília (UnB)</dd></div>
-        <div><dt data-pt="Formatura">Graduation</dt><dd data-pt="Prevista para o fim de 2027">Expected end of 2027</dd></div>
+        <div><dt data-pt="Curso">Degree</dt><dd data-pt="Bacharelado em Engenharia Aeroespacial, Universidade de Brasília (UnB)">B.Sc. in Aerospace Engineering, University of Brasília (UnB)</dd></div>
+        <div><dt data-pt="Conclusão">Graduation</dt><dd data-pt="Prevista para o final de 2027">Expected end of 2027</dd></div>
         <div><dt data-pt="Laboratório">Laboratory</dt><dd data-pt="Laboratório de Estruturas e Materiais Aeroespaciais (LEMA), desde 2025; membro oficial desde 2026">Aerospace Structures and Materials Laboratory (LEMA), since 2025; official member since 2026</dd></div>
-        <div><dt data-pt="Processo">Process</dt><dd data-pt="Bobinagem filamentar, fibra de carbono / epóxi">Filament winding, carbon fibre / epoxy</dd></div>
-        <div><dt data-pt="Local">Based in</dt><dd data-pt="Brasília, Brasil">Brasília, Brazil</dd></div>
+        <div><dt data-pt="Processo">Process</dt><dd data-pt="Bobinagem filamentar, fibra de carbono e epóxi">Filament winding, carbon fibre / epoxy</dd></div>
+        <div><dt data-pt="Cidade">Based in</dt><dd data-pt="Brasília, DF">Brasília, Brazil</dd></div>
       </dl>
     </div>
 
     <figure class="figure">
-      <canvas id="mandrel" aria-label="Drawing of a rotating mandrel with carbon fibre tows wound at plus and minus alpha" role="img" data-pt-aria="Desenho de um mandril girando, com cabos de fibra de carbono bobinados a mais e menos alfa"></canvas>
+      <canvas id="mandrel" aria-label="Drawing of a rotating mandrel with carbon fibre tows wound at plus and minus alpha" role="img" data-pt-aria="Desenho de um mandril em rotação, com fibra de carbono bobinada a mais e menos alfa"></canvas>
       <figcaption>
         <div class="alpha-control">
           <label for="alpha" class="label" data-pt="Ângulo de bobinagem">Winding angle</label>
@@ -328,11 +323,11 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="label" data-pt="Pesquisa">Research</div>
       <div class="content">
         <h2 data-pt="Bobinagem filamentar no LEMA">Filament winding at LEMA</h2>
-        <p data-pt="No Laboratório de Estruturas e Materiais Aeroespaciais da Universidade de Brasília, atuo em todo o processo de bobinagem filamentar: modelagem CAD de componentes e mandris, geração de trajetórias, fabricação, caracterização de materiais e análise estrutural.">At the Aerospace Structures and Materials Laboratory of the University of Brasília, I work across the filament winding process: CAD modelling of components and mandrels, winding-path generation, manufacturing, material characterisation and structural analysis.</p>
+        <p data-pt="No Laboratório de Estruturas e Materiais Aeroespaciais (LEMA) da Universidade de Brasília, participo de todas as etapas da bobinagem filamentar: modelagem CAD de componentes e mandris, geração de trajetórias, fabricação, caracterização de materiais e análise estrutural.">At the Aerospace Structures and Materials Laboratory of the University of Brasília, I work across the filament winding process: CAD modelling of components and mandrels, winding-path generation, manufacturing, material characterisation and structural analysis.</p>
         <figure class="diagram">
           <div class="scroll">
             <svg viewBox="0 0 900 310" role="img" aria-labelledby="dg-title">
-              <title id="dg-title" data-pt="Esquema da bobinagem filamentar via úmida: bobinas, tensionador, banho de resina, carro e mandril girando">Schematic of wet filament winding: creel, tensioner, resin bath, carriage and rotating mandrel</title>
+              <title id="dg-title" data-pt="Esquema da bobinagem filamentar por via úmida: bobinas de fibra, tensionador, banho de resina, olhal e mandril em rotação">Schematic of wet filament winding: creel, tensioner, resin bath, carriage and rotating mandrel</title>
               <defs>
                 <marker id="dg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dg-head"/></marker>
                 <pattern id="dg-hatch-a" width="13" height="13" patternUnits="userSpaceOnUse" patternTransform="rotate(-32)"><rect width="13" height="13" class="dg-none"/><line x1="0" y1="6.5" x2="13" y2="6.5" class="dg-hatch-a"/></pattern>
@@ -378,14 +373,14 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <line class="dg-line" x1="670" y1="204" x2="670" y2="193"/>
               <circle cx="670" cy="188" r="5" class="dg-eye"/>
               <line class="dg-line" x1="614" y1="254" x2="726" y2="254" marker-start="url(#dg-arrow)" marker-end="url(#dg-arrow)"/>
-              <text x="670" y="282" class="dg-label" text-anchor="middle" data-pt="Carro">Carriage</text>
-              <text x="670" y="302" class="dg-param" text-anchor="middle" data-pt="vel. do carro v">traverse speed v</text>
+              <text x="670" y="282" class="dg-label" text-anchor="middle" data-pt="Olhal">Carriage</text>
+              <text x="670" y="302" class="dg-param" text-anchor="middle" data-pt="velocidade v">traverse speed v</text>
 
               <text x="892" y="274" class="dg-label" text-anchor="end" data-pt="Ângulo de bobinagem">Winding angle</text>
               <text x="892" y="296" class="dg-param" text-anchor="end">tan α = ωr / v</text>
             </svg>
           </div>
-          <figcaption data-pt="Esquema da bobinagem filamentar via úmida. Os parâmetros que estudo são definidos em pontos diferentes da linha: a pré-tensão no tensionador, o volume de resina no banho de resina e o ângulo de bobinagem α pela razão entre a velocidade superficial do mandril ωr e a velocidade do carro v.">Schematic of wet filament winding. The parameters I study are set at different points of the line: pretension at the tensioner, resin volume at the resin bath, and the winding angle α by the ratio between the mandrel surface speed ωr and the carriage speed v.</figcaption>
+          <figcaption data-pt="Esquema da bobinagem filamentar por via úmida. Cada parâmetro que estudo é controlado em um ponto diferente da linha: a pré-tensão no tensionador, o volume de resina no banho e o ângulo de bobinagem α pela relação entre a velocidade periférica do mandril (ωr) e a velocidade do olhal (v).">Schematic of wet filament winding. The parameters I study are set at different points of the line: pretension at the tensioner, resin volume at the resin bath, and the winding angle α by the ratio between the mandrel surface speed ωr and the carriage speed v.</figcaption>
         </figure>
         <div class="pair">
           <article class="study">
@@ -393,10 +388,10 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <a href="micro-sections.jpg" target="_blank" rel="noopener"><img src="micro-sections.jpg" alt="Optical micrograph of impregnated carbon fibre tow cross-sections" width="847" height="236"></a>
               <a href="micro-closeup.jpg" target="_blank" rel="noopener"><img src="micro-closeup.jpg" alt="Close-up optical micrograph of a tow cross-section with voids" width="223" height="248"></a>
             </div>
-            <p class="mini-cap mono" data-pt="Micrografias ópticas de seções transversais de cabos. Clique para ampliar.">Optical micrographs of tow cross-sections. Select to enlarge.</p>
+            <p class="mini-cap mono" data-pt="Micrografias ópticas das seções transversais das amostras. Clique para ampliar.">Optical micrographs of tow cross-sections. Select to enlarge.</p>
             <div class="label" data-pt="Processo e propriedades">Process and properties</div>
             <h3 data-pt="Parâmetros de bobinagem, microestrutura e resistência">Winding parameters, microstructure and strength</h3>
-            <p data-pt="Medição do ângulo de bobinagem, da pré-tensão e do volume de resina, e caracterização de como eles afetam a microestrutura e a resistência à tração de cabos de fibra de carbono consolidados e impregnados.">Measuring winding angle, pretension and resin volume, and characterising how they affect the microstructure and tensile strength of consolidated, impregnated carbon fibre tows.</p>
+            <p data-pt="Medição do ângulo de bobinagem, da pré-tensão e do volume de resina, e caracterização do seu efeito na microestrutura e na resistência à tração de amostras de fibra de carbono consolidadas e impregnadas.">Measuring winding angle, pretension and resin volume, and characterising how they affect the microstructure and tensile strength of consolidated, impregnated carbon fibre tows.</p>
           </article>
           <article class="study">
             <div class="media">
@@ -406,7 +401,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
             <p class="mini-cap mono" data-pt="Mandril com anéis de pinos e uma bobinagem de teste. Clique para ampliar.">Mandrel with pin-rings, and a test winding. Select to enlarge.</p>
             <div class="label" data-pt="Trajetória da máquina">Machine path</div>
             <h3 data-pt="Bobinagem de tubos retangulares">Winding rectangular tubes</h3>
-            <p data-pt="Uma solução analítica simplificada para gerar a trajetória da máquina na bobinagem de tubos retangulares com ângulos pequenos, usando anéis de pinos.">A simplified analytical solution for generating the machine path when winding rectangular tubes at small winding angles, using pin-rings.</p>
+            <p data-pt="Solução analítica simplificada para gerar a trajetória da máquina na bobinagem filamentar de tubos retangulares com ângulos baixos, usando anéis de pinos.">A simplified analytical solution for generating the machine path when winding rectangular tubes at small winding angles, using pin-rings.</p>
           </article>
         </div>
         <p class="tools mono" data-pt="CATIA · Fusion 360 · AutoCAD · Ansys Mechanical e APDL · MATLAB · Mathcad">CATIA · Fusion 360 · AutoCAD · Ansys Mechanical and APDL · MATLAB · Mathcad</p>
@@ -414,15 +409,15 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
           <img src="lema-winding-1.jpg" alt="Fernanda working on the filament winding machine at the LEMA laboratory" width="1280" height="960" loading="lazy">
           <img src="lema-winding-2.jpg" alt="Fernanda handling carbon fibre tow on the filament winding machine" width="1280" height="960" loading="lazy">
         </div>
-        <p class="photo-caption mono" data-pt="Trabalhando na máquina de bobinagem filamentar do LEMA, Universidade de Brasília">Working on the filament winding machine at LEMA, University of Brasília</p>
+        <p class="photo-caption mono" data-pt="Na máquina de bobinagem filamentar do LEMA, Universidade de Brasília">Working on the filament winding machine at LEMA, University of Brasília</p>
       </div>
     </section>
 
     <section id="publications">
       <div class="label" data-pt="Publicações">Publications</div>
       <div class="content">
-        <h2 data-pt="Trabalhos em congresso">Conference papers</h2>
-        <p data-pt="Apresentei oralmente os dois resumos expandidos, um como primeira autora e outro como segunda autora, no BCCM8 (8th Brazilian Conference on Composite Materials), em Foz do Iguaçu, de 16 a 19 de agosto de 2026.">I presented both extended abstracts orally, one as first author and one as second author, at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, 16 to 19 August 2026.</p>
+        <h2 data-pt="Trabalhos apresentados em congresso">Conference papers</h2>
+        <p data-pt="Apresentei oralmente os dois trabalhos no 8th Brazilian Conference on Composite Materials (BCCM8), em Foz do Iguaçu, de 16 a 19 de agosto de 2026. Sou primeira autora de um deles e segunda autora do outro.">I presented both extended abstracts orally, one as first author and one as second author, at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, 16 to 19 August 2026.</p>
         <ul class="pubs">
           <li>
             <span class="t">Influence of Filament Winding Parameters on the Microstructure and Tensile Strength of Consolidated and Impregnated Carbon Fiber Tows</span>
@@ -437,55 +432,55 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
           <img src="bccm8-1.jpg" alt="Fernanda on stage at the 8th Brazilian Conference on Composite Materials" width="960" height="1280" loading="lazy">
           <img src="bccm8-2.jpg" alt="Fernanda presenting her work at BCCM8" width="960" height="1280" loading="lazy">
         </div>
-        <p class="photo-caption mono" data-pt="Apresentando no BCCM8, Foz do Iguaçu, agosto de 2026">Presenting at BCCM8, Foz do Iguaçu, August 2026</p>
+        <p class="photo-caption mono" data-pt="Apresentação no BCCM8, Foz do Iguaçu, agosto de 2026">Presenting at BCCM8, Foz do Iguaçu, August 2026</p>
       </div>
     </section>
 
     <section id="projects">
       <div class="label" data-pt="Projetos">Projects</div>
       <div class="content">
-        <h2 data-pt="Outros trabalhos">Other work</h2>
+        <h2 data-pt="Outros projetos">Other work</h2>
         <div class="entries">
           <div class="entry">
             <div>
-              <h3 data-pt="Estrutura bobinada para drone">Filament-wound drone structure</h3>
-              <div class="where" data-pt="Projeto de extensão · UnB">University extension project · UnB</div>
-              <p data-pt="Estudo de viabilidade de uma estrutura bobinada de pulverização seletiva para um drone multirrotor. Trabalho na bobinagem filamentar da estrutura e nos seus cálculos estruturais.">Feasibility study of a filament-wound selective-spraying structure for a multirotor drone. I work on the filament winding of the structure and on its structural calculations.</p>
+              <h3 data-pt="Estrutura de drone por bobinagem filamentar">Filament-wound drone structure</h3>
+              <div class="where" data-pt="Projeto de extensão · UnB">Projeto de extensão · UnB</div>
+              <p data-pt="Estudo de viabilidade de uma estrutura fabricada por bobinagem filamentar para um drone multirrotor de pulverização seletiva. Atuo na bobinagem da estrutura e nos seus cálculos estruturais.">Feasibility study of a filament-wound selective-spraying structure for a multirotor drone. I work on the filament winding of the structure and on its structural calculations.</p>
             </div>
             <div class="when mono" data-pt="Em andamento">Ongoing</div>
           </div>
           <div class="entry">
             <div>
-              <h3 data-pt="Componentes em compósito com o LabTelecom">Composite components with LabTelecom</h3>
-              <div class="where" data-pt="Laboratório de Telecomunicações · UnB">Telecommunications Laboratory · UnB</div>
-              <p data-pt="Parceria com o Laboratório de Telecomunicações para produzir componentes em materiais compósitos.">Partnership with the Telecommunications Laboratory to produce components in composite materials.</p>
+              <h3 data-pt="Componentes em compósitos com o LabTelecom">Composite components with LabTelecom</h3>
+              <div class="where" data-pt="Laboratório de Telecomunicações (LabTelecom) · UnB">Telecommunications Laboratory · UnB</div>
+              <p data-pt="Parceria com o Laboratório de Telecomunicações na fabricação de componentes em materiais compósitos.">Partnership with the Telecommunications Laboratory to produce components in composite materials.</p>
               <figure class="single">
                 <img src="vna.jpg" alt="Fernanda connecting a component to a vector network analyser" width="1280" height="960" loading="lazy">
-                <figcaption class="photo-caption mono" data-pt="Medindo com um analisador vetorial de redes (VNA)">Measuring with a vector network analyser (VNA)</figcaption>
+                <figcaption class="photo-caption mono" data-pt="Medição com analisador vetorial de redes (VNA)">Measuring with a vector network analyser (VNA)</figcaption>
               </figure>
             </div>
           </div>
           <div class="entry">
             <div>
               <h3 data-pt="Estrelas compactas">Compact stars</h3>
-              <div class="where" data-pt="Iniciação científica (PIBIC) · UnB">Undergraduate research scholarship · UnB</div>
-              <p data-pt="Projeto de astrofísica sobre anãs brancas e estrelas de nêutrons: pressão de degenerescência de férmions e o limite de massa de Chandrasekhar.">Astrophysics project on white dwarfs and neutron stars: fermion degeneracy pressure and the Chandrasekhar mass limit.</p>
+              <div class="where" data-pt="Iniciação científica (PIBIC) · UnB">PIBIC research scholarship · UnB</div>
+              <p data-pt="Projeto em astrofísica sobre anãs brancas e estrelas de nêutrons: pressão de degenerescência de férmions e limite de massa de Chandrasekhar.">Astrophysics project on white dwarfs and neutron stars: fermion degeneracy pressure and the Chandrasekhar mass limit.</p>
             </div>
-            <div class="when mono" data-pt="Set 2024 – Set 2025">Sep 2024 – Sep 2025</div>
+            <div class="when mono" data-pt="set/2024 – set/2025">Sep 2024 – Sep 2025</div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="teaching">
-      <div class="label" data-pt="Ensino">Teaching</div>
+      <div class="label" data-pt="Monitoria">Teaching</div>
       <div class="content">
-        <h2 data-pt="Ensino e extensão">Teaching and outreach</h2>
-        <p data-pt="Monitora na Universidade de Brasília nas disciplinas Mecânica das Estruturas Aeroespaciais, Cálculo I, Cálculo III e Física I, com plantões de dúvidas para os alunos.">Undergraduate teaching assistant at the University of Brasília in Aerospace Structural Mechanics, Calculus I, Calculus III and Physics I, holding office hours for students.</p>
+        <h2 data-pt="Monitoria e extensão">Teaching and outreach</h2>
+        <p data-pt="Monitora em quatro disciplinas da Universidade de Brasília: Mecânica Estrutural Aeroespacial, Cálculo 1, Cálculo 3 e Física 1. Atendimento aos alunos para tirar dúvidas sobre o conteúdo.">Undergraduate teaching assistant at the University of Brasília in Aerospace Structural Mechanics, Calculus I, Calculus III and Physics I, holding office hours for students.</p>
         <ul class="plain">
-          <li data-pt="&lt;strong&gt;Explorando a Engenharia de Termofluidos e Veículos de Competição&lt;/strong&gt;, curso para estudantes universitários (duas edições)."><strong>Exploring Thermofluids Engineering and Competition Vehicles</strong>, a course for university students (two editions).</li>
-          <li data-pt="&lt;strong&gt;Pré-Cálculo&lt;/strong&gt; na Faculdade de Ciências e Tecnologias em Engenharia (FCTE/UnB), no segundo semestre de 2023."><strong>Pre-Calculus</strong> at the Faculty of Science and Technology in Engineering (FCTE/UnB), second semester of 2023.</li>
-          <li data-pt="&lt;strong&gt;Divulgação em escolas&lt;/strong&gt;: participação da FCTE na feira de profissões do Colégio Leonardo da Vinci e recepção de estudantes de escolas do DF no campus do Gama."><strong>School outreach</strong>: FCTE's participation in the Leonardo da Vinci School careers fair, and the reception of Federal District school students at the Gama campus.</li>
+          <li data-pt="&lt;strong&gt;Explorando a Engenharia de Termofluidos e Veículos de Competição&lt;/strong&gt;: curso para estudantes universitários, duas edições."><strong>Explorando a Engenharia de Termofluidos e Veículos de Competição</strong>, a course for university students (two editions).</li>
+          <li data-pt="&lt;strong&gt;Pré-Cálculo&lt;/strong&gt;: curso oferecido na Faculdade de Ciências e Tecnologias em Engenharia (FCTE/UnB) no segundo semestre de 2023."><strong>Pré-Cálculo</strong> at the Faculdade de Ciências e Tecnologias em Engenharia (FCTE/UnB), second semester of 2023.</li>
+          <li data-pt="&lt;strong&gt;Divulgação nas escolas&lt;/strong&gt;: participação da FCTE na feira de profissões do Colégio Leonardo da Vinci e recepção de estudantes de escolas do Distrito Federal no campus Gama."><strong>School outreach</strong>: FCTE's participation in the Colégio Leonardo da Vinci careers fair, and the reception of Federal District school students at the Gama campus.</li>
         </ul>
       </div>
     </section>
@@ -496,37 +491,37 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
         <h2 data-pt="Ferramentas e idiomas">Tools and languages</h2>
         <dl class="skills">
           <div><dt>CAD</dt><dd>CATIA, Fusion 360, AutoCAD</dd></div>
-          <div><dt data-pt="Análise por elementos finitos">Finite element analysis</dt><dd>Ansys Mechanical, Ansys APDL</dd></div>
+          <div><dt data-pt="Elementos finitos">Finite element analysis</dt><dd>Ansys Mechanical, Ansys APDL</dd></div>
           <div><dt data-pt="Computação">Computing</dt><dd>MATLAB, Mathcad, Scilab</dd></div>
-          <div><dt data-pt="Fabricação">Manufacturing</dt><dd data-pt="Bobinagem filamentar, compósitos, fresamento CNC, impressão 3D">Filament winding, composites, CNC milling, 3D printing</dd></div>
-          <div><dt data-pt="Documentos">Documents</dt><dd>LaTeX, Mendeley</dd></div>
+          <div><dt data-pt="Manufatura">Manufacturing</dt><dd data-pt="Bobinagem filamentar, compósitos, fresamento CNC, impressão 3D (Cura)">Filament winding, composites, CNC milling, 3D printing</dd></div>
+          <div><dt data-pt="Outras ferramentas">Documents</dt><dd>LaTeX, Mendeley</dd></div>
           <div><dt data-pt="Idiomas">Languages</dt><dd data-pt="Português (nativo), inglês (fluente), espanhol (intermediário), francês (básico)">Portuguese (native), English (fluent), Spanish (intermediate), French (basic)</dd></div>
         </dl>
       </div>
     </section>
 
     <section id="education">
-      <div class="label" data-pt="Formação">Education</div>
+      <div class="label" data-pt="Formação acadêmica">Education</div>
       <div class="content">
-        <h2 data-pt="Formação">Education</h2>
+        <h2 data-pt="Formação acadêmica">Education</h2>
         <figure class="timeline">
-          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), two oral presentations at BCCM8 in August 2026." data-pt-aria="Linha do tempo de 2016 a 2028: ensino médio nos EUA de 2016 a 2020, imersão em inglês em 2018, bacharelado na Universidade de Brasília desde 2022 com formatura prevista para o fim de 2027, iniciação científica de setembro de 2024 a setembro de 2025, LEMA desde 2025 (membro oficial desde 2026), duas apresentações orais no BCCM8 em agosto de 2026."></div>
-          <figcaption class="mono" data-pt="Em escala por ano. Barra clara: antes de ser membro oficial do LEMA. Tracejado: previsto, até a formatura no fim de 2027.">To scale by year. Light bar: before official LEMA membership. Dashed: expected, up to graduation at the end of 2027.</figcaption>
+          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), two oral presentations at BCCM8 in August 2026." data-pt-aria="Linha do tempo de 2016 a 2028: ensino médio americano de 2016 a 2020; imersão em inglês em 2018; bacharelado na Universidade de Brasília desde 2022, com previsão de conclusão no final de 2027; iniciação científica (PIBIC) de setembro de 2024 a setembro de 2025; LEMA desde 2025, como membro oficial desde 2026; duas apresentações orais no BCCM8 em agosto de 2026."></div>
+          <figcaption class="mono" data-pt="Em escala, ano a ano. Trecho claro: período no LEMA antes de me tornar membro oficial. Tracejado: previsão até a conclusão do curso, no final de 2027.">To scale by year. Light bar: before official LEMA membership. Dashed: expected, up to graduation at the end of 2027.</figcaption>
         </figure>
         <div class="entries">
           <div class="entry">
             <div>
               <h3 data-pt="Bacharelado em Engenharia Aeroespacial">B.Sc. in Aerospace Engineering</h3>
-              <div class="where" data-pt="Universidade de Brasília (UnB), Brasil">University of Brasília (UnB), Brazil</div>
-              <p data-pt="Conclusão prevista para o fim de 2027.">Expected to be completed by the end of 2027.</p>
+              <div class="where" data-pt="Universidade de Brasília (UnB)">University of Brasília (UnB), Brazil</div>
+              <p data-pt="Previsão de conclusão: final de 2027.">Expected to be completed by the end of 2027.</p>
             </div>
             <div class="when mono">2022 – 2027</div>
           </div>
           <div class="entry">
             <div>
-              <h3 data-pt="Diploma de ensino médio dos EUA">U.S. High School Diploma</h3>
+              <h3 data-pt="Ensino Médio Americano (U.S. High School Diploma)">U.S. High School Diploma</h3>
               <div class="where" data-pt="Mizzou K-12 Online, University of Missouri, EUA">Mizzou K-12 Online, University of Missouri, USA</div>
-              <p data-pt="Programa online que combina disciplinas de humanidades e STEAM, baseado em pesquisa, debate e projetos sobre questões globais. Disciplinas concluídas em 2020; o diploma foi emitido em fevereiro de 2022, com atraso por causa da pandemia de COVID-19.">Online programme combining liberal arts and STEAM coursework, built around research, discussion and project work on global issues. Coursework completed in 2020; the diploma was awarded in February 2022, delayed by the COVID-19 pandemic.</p>
+              <p data-pt="Programa online com disciplinas de artes liberais e STEAM, baseado em pesquisa, debates e projetos sobre questões globais. Disciplinas concluídas em 2020; diploma emitido em fevereiro de 2022, com atraso devido à pandemia de COVID-19.">Online programme combining liberal arts and STEAM coursework, built around research, discussion and project work on global issues. Coursework completed in 2020; the diploma was awarded in February 2022, delayed by the COVID-19 pandemic.</p>
               <a class="thumb" href="diploma.jpg" target="_blank" rel="noopener">
                 <img src="diploma.jpg" alt="University of Missouri High School diploma awarded to Fernanda Queiroz Sotero Caio" width="1600" height="1268" loading="lazy">
                 <span class="mono" data-pt="Ver diploma (emitido em fevereiro de 2022)">View diploma (awarded February 2022)</span>
@@ -536,8 +531,9 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
           </div>
           <div class="entry">
             <div>
-              <h3 data-pt="Programa de imersão em inglês">English Immersion Programme</h3>
+              <h3 data-pt="Programa de Imersão em Inglês">English Immersion Programme</h3>
               <div class="where" data-pt="California State University, Long Beach, EUA">California State University, Long Beach, USA</div>
+              <p data-pt="Morei na residência estudantil e tive aulas imersivas de inglês, vivendo a rotina de uma estudante universitária. O programa incluiu aulas de vários cursos, como negócios, engenharia, enfermagem e medicina (onde fiz um parto em um robô simulador), além de assistir a um julgamento no tribunal e participar de atividades culturais e visitas. Recebi certificado de conclusão.">I lived in student housing on campus and took immersive English classes, following the routine of a university student. The programme included sessions from several departments, such as business, engineering, nursing and medicine (where I delivered a baby on a robotic patient simulator), as well as attending a court trial, cultural activities and visits. I received a certificate of completion.</p>
             </div>
             <div class="when mono">2018</div>
           </div>
@@ -546,13 +542,13 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
     </section>
 
     <section id="outside">
-      <div class="label" data-pt="Fora do laboratório">Outside the lab</div>
+      <div class="label" data-pt="Atividades extracurriculares">Outside the lab</div>
       <div class="content">
         <ul class="plain">
-          <li data-pt="&lt;strong&gt;Patinação&lt;/strong&gt;: campeonatos regionais desde 2024, competindo em duas a três categorias, com medalhas de ouro e prata."><strong>Roller skating</strong>: regional championships since 2024, competing in two to three categories, with gold and silver medals.</li>
+          <li data-pt="&lt;strong&gt;Patinação&lt;/strong&gt;: campeonatos regionais desde 2024, em duas a três categorias por campeonato, com medalhas de ouro e prata."><strong>Roller skating</strong>: regional championships since 2024, competing in two to three categories, with gold and silver medals.</li>
           <li data-pt="&lt;strong&gt;Nado artístico&lt;/strong&gt;: duas medalhas de ouro no São Paulo Opening de 2019, nas provas de quarteto e dueto."><strong>Artistic swimming</strong>: two gold medals at the São Paulo Opening in 2019, in the quartet and duet events.</li>
-          <li data-pt="&lt;strong&gt;Simulações da ONU&lt;/strong&gt;: comitê da Organização Mundial da Saúde (OMS)."><strong>Model United Nations</strong>: World Health Organization (WHO) committee simulations.</li>
-          <li data-pt="&lt;strong&gt;Piano&lt;/strong&gt;: aulas regulares, com dois recitais por ano."><strong>Piano</strong>: ongoing lessons, with two recitals a year.</li>
+          <li data-pt="&lt;strong&gt;Modelo das Nações Unidas&lt;/strong&gt;: participação em simulações do comitê da Organização Mundial da Saúde (OMS)."><strong>Model United Nations</strong>: World Health Organization (WHO) committee simulations.</li>
+          <li data-pt="&lt;strong&gt;Piano&lt;/strong&gt;: aulas em andamento, com dois recitais por ano."><strong>Piano</strong>: ongoing lessons, with two recitals a year.</li>
         </ul>
       </div>
     </section>
@@ -560,7 +556,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
     <section id="contact">
       <div class="label" data-pt="Contato">Contact</div>
       <div class="content">
-        <h2 data-pt="Fale comigo">Get in touch</h2>
+        <h2 data-pt="Entre em contato">Get in touch</h2>
         <div class="contact-row">
           <span class="email" id="email">nandacaio100@gmail.com</span>
           <button class="btn" type="button" id="copy-email" data-pt="Copiar e-mail">Copy email</button>
@@ -573,7 +569,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
 
   <footer class="mono">
     <span>© 2026 Fernanda Sotero Caio</span>
-    <span data-pt="Brasília, Brasil">Brasília, Brazil</span>
+    <span data-pt="Brasília, DF">Brasília, Brazil</span>
   </footer>
 </div>
 
@@ -590,9 +586,9 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
   btn.addEventListener('click', function () {
     var text = email.textContent.trim();
     try {
-      navigator.clipboard.writeText(text).then(function () { state.textContent = (window.__lang === 'pt') ? 'Copiado.' : 'Copied.'; },
-        function () { selectEmail(); state.textContent = (window.__lang === 'pt') ? 'Selecionado. Use Ctrl+C ou Cmd+C para copiar.' : 'Selected. Press Ctrl+C or Cmd+C to copy.'; });
-    } catch (e) { selectEmail(); state.textContent = (window.__lang === 'pt') ? 'Selecionado. Use Ctrl+C ou Cmd+C para copiar.' : 'Selected. Press Ctrl+C or Cmd+C to copy.'; }
+      navigator.clipboard.writeText(text).then(function () { state.textContent = (window.__lang === 'pt') ? 'E-mail copiado.' : 'Copied.'; },
+        function () { selectEmail(); state.textContent = (window.__lang === 'pt') ? 'E-mail selecionado. Use Ctrl+C ou Cmd+C para copiar.' : 'Selected. Press Ctrl+C or Cmd+C to copy.'; });
+    } catch (e) { selectEmail(); state.textContent = (window.__lang === 'pt') ? 'E-mail selecionado. Use Ctrl+C ou Cmd+C para copiar.' : 'Selected. Press Ctrl+C or Cmd+C to copy.'; }
   });
 
   /* rotating mandrel with a ±alpha helical winding */
@@ -610,9 +606,9 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
     ALPHA = d * Math.PI / 180;
     alphaOut.textContent = 'α = ' + d + '°';
     var pt = (window.__lang === 'pt');
-    regime.textContent = d < 25 ? (pt ? 'Ângulo baixo: os cabos ficam próximos do eixo do mandril' : 'Low angle: tows run close to the mandrel axis')
-      : d >= 65 ? (pt ? 'Ângulo alto: aproximando-se da bobinagem circunferencial' : 'High angle: approaching hoop winding')
-      : (pt ? 'Bobinagem helicoidal: os cabos cruzados a ±α formam o padrão de losangos' : 'Helical winding: crossing ±α tows form the diamond pattern');
+    regime.textContent = d < 25 ? (pt ? 'Ângulo baixo: as fibras ficam quase paralelas ao eixo do mandril' : 'Low angle: tows run close to the mandrel axis')
+      : d >= 65 ? (pt ? 'Ângulo alto: próximo da bobinagem circunferencial' : 'High angle: approaching hoop winding')
+      : (pt ? 'Bobinagem helicoidal: as fibras cruzadas a ±α formam o padrão de losangos' : 'Helical winding: crossing ±α tows form the diamond pattern');
     draw();
   }
   alphaInput.addEventListener('input', setAlpha);
@@ -719,7 +715,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       ctx.fillStyle = colors['--muted'];
       ctx.font = '400 11px "IBM Plex Mono", ui-monospace, monospace';
       ctx.fillText((window.__lang === 'pt') ? 'EIXO' : 'AXIS', kx + len - 28, ky + 16);
-      ctx.fillText((window.__lang === 'pt') ? 'CABO' : 'TOW', kx + len * Math.cos(ALPHA) - 6, ky - len * Math.sin(ALPHA) - 8);
+      ctx.fillText((window.__lang === 'pt') ? 'FIBRA' : 'TOW', kx + len * Math.cos(ALPHA) - 6, ky - len * Math.sin(ALPHA) - 8);
     }
   }
 
@@ -756,12 +752,12 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
 
   /* timeline, drawn to scale at the container's width; each row has a name above the bar and its dates below */
   var ROWS = [
-    { label: 'U.S. high school (Mizzou K-12 Online)', label_pt: 'Ensino médio nos EUA (Mizzou K-12 Online)', meta: '2016 – 2020 · diploma awarded Feb 2022', meta_pt: '2016 – 2020 · diploma emitido em fev 2022', segs: [[2016, 2021, 'tl-edu']] },
+    { label: 'U.S. high school (Mizzou K-12 Online)', label_pt: 'Ensino médio americano (Mizzou K-12 Online)', meta: '2016 – 2020 · diploma awarded Feb 2022', meta_pt: '2016 – 2020 · diploma emitido em fev/2022', segs: [[2016, 2021, 'tl-edu']] },
     { label: 'English immersion, CSULB', label_pt: 'Imersão em inglês, CSULB', meta: '2018', meta_pt: '2018', at: 2018.5 },
-    { label: 'B.Sc. Aerospace Engineering, UnB', label_pt: 'Bacharelado em Eng. Aeroespacial, UnB', meta: '2022 – end of 2027 (expected)', meta_pt: '2022 – fim de 2027 (previsto)', segs: [[2022, 'now', 'tl-edu'], ['now', 2028, 'tl-plan']] },
-    { label: 'PIBIC research scholarship: compact stars', label_pt: 'Iniciação científica (PIBIC): estrelas compactas', meta: 'Sep 2024 – Sep 2025', meta_pt: 'Set 2024 – Set 2025', segs: [[2024 + 8 / 12, 2025 + 9 / 12, 'tl-res']] },
+    { label: 'B.Sc. Aerospace Engineering, UnB', label_pt: 'Engenharia Aeroespacial, UnB', meta: '2022 – end of 2027 (expected)', meta_pt: '2022 – final de 2027 (previsão)', segs: [[2022, 'now', 'tl-edu'], ['now', 2028, 'tl-plan']] },
+    { label: 'PIBIC research scholarship: compact stars', label_pt: 'PIBIC: estrelas compactas', meta: 'Sep 2024 – Sep 2025', meta_pt: 'set/2024 – set/2025', segs: [[2024 + 8 / 12, 2025 + 9 / 12, 'tl-res']] },
     { label: 'LEMA: filament winding', label_pt: 'LEMA: bobinagem filamentar', meta: 'Joined 2025 · official member since 2026', meta_pt: 'Desde 2025 · membro oficial desde 2026', segs: [[2025, 2026, 'tl-res-soft'], [2026, 'now', 'tl-res']] },
-    { label: 'BCCM8: two oral presentations', label_pt: 'BCCM8: duas apresentações orais', meta: 'Aug 2026, Foz do Iguaçu', meta_pt: 'Ago 2026, Foz do Iguaçu', at: 2026 + 7.5 / 12 }
+    { label: 'BCCM8: two oral presentations', label_pt: 'BCCM8: duas apresentações orais', meta: 'Aug 2026, Foz do Iguaçu', meta_pt: 'ago/2026, Foz do Iguaçu', at: 2026 + 7.5 / 12 }
   ];
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
   function place(text, start, end, W, cw) {
@@ -821,13 +817,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
 </script>
 <script>
 (function () {
-  var KEY = 'portfolio-lang';
-  function initial() {
-    var h = (location.hash || '').replace('#', '');
-    if (h === 'pt' || h === 'en') return h;
-    try { var v = localStorage.getItem(KEY); if (v === 'pt' || v === 'en') return v; } catch (e) {}
-    return 'en';
-  }
+  var toggle = document.getElementById('lang-toggle');
   function apply(lang) {
     window.__lang = lang;
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
@@ -843,21 +833,16 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       if (el.__enAria === undefined) el.__enAria = el.getAttribute('aria-label');
       el.setAttribute('aria-label', lang === 'pt' ? el.getAttribute('data-pt-aria') : el.__enAria);
     });
-    document.querySelectorAll('.lang button').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
-    });
+    /* the button is written in the language it switches to */
+    toggle.setAttribute('lang', lang === 'pt' ? 'en' : 'pt');
     var st = document.getElementById('copy-state'); if (st) st.textContent = '';
-    try { localStorage.setItem(KEY, lang); } catch (e) {}
     document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
   }
-  document.querySelectorAll('.lang button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var lang = b.getAttribute('data-lang');
-      apply(lang);
-      try { history.replaceState(null, '', '#' + lang); } catch (e) {}
-    });
+  toggle.addEventListener('click', function () {
+    apply(window.__lang === 'pt' ? 'en' : 'pt');
   });
-  apply(initial());
+  /* the page always opens in English */
+  apply('en');
 })();
 </script>
 
