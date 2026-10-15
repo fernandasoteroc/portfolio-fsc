@@ -147,9 +147,8 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 .content { min-width: 0; }
 
 .pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 22px; }
-@media (min-width: 680px) { .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.study { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
-.study p { margin: 0; font-size: 0.98rem; }
+.study { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+.study p { margin: 0; font-size: 0.98rem; max-width: 65ch; }
 .study .label { color: var(--accent); }
 .tools { margin-top: 18px; color: var(--muted); }
 
@@ -223,6 +222,7 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 .mn-pin { fill: var(--fg); }
 .mn-center { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 10 3 2 3; }
 .media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 520px) { .media { grid-template-columns: minmax(0, 1fr); } }
 .media a { display: block; border-radius: 3px; overflow: hidden; }
 .media img { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--mandrel); transition: transform 0.25s ease; }
 .media a:hover img { transform: scale(1.03); }
@@ -291,7 +291,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <dl class="spec" aria-label="Summary">
         <div><dt>Degree</dt><dd>B.Sc. in Aerospace Engineering, University of Brasília (UnB)</dd></div>
         <div><dt>Graduation</dt><dd>Expected end of 2027</dd></div>
-        <div><dt>Laboratory</dt><dd>Aerospace Structures and Materials Laboratory (LEMA), since 2025</dd></div>
+        <div><dt>Laboratory</dt><dd>Aerospace Structures and Materials Laboratory (LEMA), since 2025; official member since 2026</dd></div>
         <div><dt>Process</dt><dd>Filament winding, carbon fibre / epoxy</dd></div>
         <div><dt>Based in</dt><dd>Brasília, Brazil</dd></div>
       </dl>
@@ -385,8 +385,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
           </article>
           <article class="study">
             <div class="media">
-              <a href="mandrel-pins.jpg" target="_blank" rel="noopener"><img src="mandrel-pins-tile.jpg" alt="Pin-ring on a mandrel of the winding machine" width="640" height="480"></a>
-              <a href="winding-pins.jpg" target="_blank" rel="noopener"><img src="winding-pins-tile.jpg" alt="Test winding held by a pin-ring at the end of the mandrel" width="640" height="480"></a>
+              <a href="mandrel-pins.jpg" target="_blank" rel="noopener"><img src="mandrel-pins-tile.jpg" alt="Mandrel with a pin-ring at each end" width="960" height="720"></a>
+              <a href="winding-pins.jpg" target="_blank" rel="noopener"><img src="winding-pins-tile.jpg" alt="Test winding held by a pin-ring at the end of the mandrel" width="960" height="720"></a>
             </div>
             <p class="mini-cap mono">Mandrel with pin-rings, and a test winding. Select to enlarge.</p>
             <div class="label">Machine path</div>
@@ -456,7 +456,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <div class="where">Undergraduate research scholarship · UnB</div>
               <p>Astrophysics project on white dwarfs and neutron stars: fermion degeneracy pressure and the Chandrasekhar mass limit.</p>
             </div>
-            <div class="when mono">2023 – 2024</div>
+            <div class="when mono">Sep 2024 – Sep 2025</div>
           </div>
         </div>
       </div>
@@ -495,7 +495,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="content">
         <h2>Education</h2>
         <figure class="timeline">
-          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship 2023 to 2024, LEMA from 2025, BCCM8 presentations in August 2026."></div>
+          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), BCCM8 presentations in August 2026."></div>
           <figcaption class="mono">To scale by year. Dashed: expected, up to graduation at the end of 2027.</figcaption>
         </figure>
         <div class="entries">
@@ -742,8 +742,8 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
     { label: 'U.S. high school (Mizzou K-12 Online)', from: 2016, to: 2021, cls: 'tl-edu' },
     { label: 'English immersion, CSULB', at: 2018.5 },
     { label: 'B.Sc. Aerospace Engineering, UnB', from: 2022, to: 2028, cls: 'tl-edu', expected: true },
-    { label: 'Research scholarship: compact stars', from: 2023, to: 2025, cls: 'tl-res' },
-    { label: 'LEMA: filament winding', from: 2025, to: 'now', cls: 'tl-res' },
+    { label: 'Research scholarship: compact stars', from: 2024 + 8 / 12, to: 2025 + 9 / 12, cls: 'tl-res' },
+    { label: 'LEMA: filament winding (member since 2026)', from: 2025, to: 'now', cls: 'tl-res' },
     { label: 'BCCM8 presentations', at: 2026.6 }
   ];
   function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
