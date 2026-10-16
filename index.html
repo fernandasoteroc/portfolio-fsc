@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fernanda Sotero Caio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Fernanda Sotero Caio, aerospace engineering student at the University of Brasília, working on filament winding of carbon fibre composites.">
+<meta name="description" content="Fernanda Sotero Caio, aerospace engineering student at the University of Brasília, working on the manufacturing, characterisation and structural analysis of filament-wound fibre-reinforced composites.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&display=swap">
@@ -168,6 +168,7 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 .entry .when { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .entry p { margin: 4px 0 0; font-size: 0.98rem; }
 .entry .where { color: var(--accent); font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.04em; }
+.entry .plain { margin: 8px 0 4px; font-size: 0.98rem; }
 
 .skills { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
 @media (min-width: 620px) { .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; } }
@@ -263,6 +264,11 @@ section p { margin: 0 0 14px; max-width: 65ch; text-wrap: pretty; }
 .thumb { display: inline-flex; flex-direction: column; gap: 6px; margin-top: 10px; text-decoration: none; color: var(--muted); }
 .thumb img { display: block; width: 220px; max-width: 100%; height: auto; aspect-ratio: 1600 / 1268; border: 1px solid var(--rule); border-radius: 2px; }
 .thumb:hover { color: var(--accent); }
+.thumbs { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 20px; margin-top: 10px; }
+.thumbs .thumb { margin-top: 0; }
+.thumb.portrait img { width: 165px; aspect-ratio: 683 / 911; object-fit: cover; }
+.single.portrait { max-width: 340px; }
+.single.portrait img { aspect-ratio: 3 / 4; }
 
 footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 
@@ -291,7 +297,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div>
         <div class="label" data-pt="Engenharia Aeroespacial · Universidade de Brasília">Aerospace engineering · University of Brasília</div>
         <h1>Fernanda Sotero Caio</h1>
-        <p class="lead" data-pt="Trabalho com bobinagem filamentar de compósitos de fibra de carbono. Estudo como o ângulo de bobinagem, a pré-tensão e o volume de resina influenciam a microestrutura e a resistência da peça, e como gerar a trajetória que a máquina percorre.">I work on filament winding of carbon fibre composites: how winding angle, pretension and resin volume affect the microstructure and strength of the part, and how to generate the machine path that lays each tow.</p>
+        <p class="lead" data-pt="Trabalho com bobinagem filamentar de compósitos reforçados com fibras, da manufatura à caracterização e à análise estrutural das peças. Estudo como o ângulo de bobinagem, a pré-tensão e o volume de resina influenciam a microestrutura e a resistência do material, e como gerar a trajetória que a máquina percorre.">I work on filament winding of fibre-reinforced composites, from manufacturing to the characterisation and structural analysis of the parts. I study how winding angle, pretension and resin volume affect the microstructure and strength of the material, and how to generate the machine path.</p>
         <div class="actions">
           <a class="btn primary" href="CV_Fernanda_Sotero_Caio.pdf" target="_blank" rel="noopener" data-pt="Baixar currículo (PDF)" data-pt-href="CV_Fernanda_Sotero_Caio_PT.pdf">Download CV (PDF)</a>
           <a class="btn" href="https://www.linkedin.com/in/fernanda-sotero-caio/" target="_blank" rel="noopener">LinkedIn</a>
@@ -302,13 +308,13 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
         <div><dt data-pt="Curso">Degree</dt><dd data-pt="Bacharelado em Engenharia Aeroespacial, Universidade de Brasília (UnB)">B.Sc. in Aerospace Engineering, University of Brasília (UnB)</dd></div>
         <div><dt data-pt="Conclusão">Graduation</dt><dd data-pt="Prevista para o final de 2027">Expected end of 2027</dd></div>
         <div><dt data-pt="Laboratório">Laboratory</dt><dd data-pt="Laboratório de Estruturas e Materiais Aeroespaciais (LEMA), desde 2025; membro oficial desde 2026">Aerospace Structures and Materials Laboratory (LEMA), since 2025; official member since 2026</dd></div>
-        <div><dt data-pt="Processo">Process</dt><dd data-pt="Bobinagem filamentar, fibra de carbono e epóxi">Filament winding, carbon fibre / epoxy</dd></div>
+        <div><dt data-pt="Área">Focus</dt><dd data-pt="Bobinagem filamentar e análise estrutural de compósitos reforçados com fibras">Filament winding and structural analysis of fibre-reinforced composites</dd></div>
         <div><dt data-pt="Cidade">Based in</dt><dd data-pt="Brasília, DF">Brasília, Brazil</dd></div>
       </dl>
     </div>
 
     <figure class="figure">
-      <canvas id="mandrel" aria-label="Drawing of a rotating mandrel with carbon fibre tows wound at plus and minus alpha" role="img" data-pt-aria="Desenho de um mandril em rotação, com fibra de carbono bobinada a mais e menos alfa"></canvas>
+      <canvas id="mandrel" aria-label="Drawing of a rotating mandrel with fibre tows wound at plus and minus alpha" role="img" data-pt-aria="Desenho de um mandril em rotação, com fibras bobinadas a mais e menos alfa"></canvas>
       <figcaption>
         <div class="alpha-control">
           <label for="alpha" class="label" data-pt="Ângulo de bobinagem">Winding angle</label>
@@ -327,7 +333,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
         <figure class="diagram">
           <div class="scroll">
             <svg viewBox="0 0 900 310" role="img" aria-labelledby="dg-title">
-              <title id="dg-title" data-pt="Esquema da bobinagem filamentar por via úmida: bobinas de fibra, tensionador, banho de resina, olhal e mandril em rotação">Schematic of wet filament winding: creel, tensioner, resin bath, carriage and rotating mandrel</title>
+              <title id="dg-title" data-pt="Esquema da bobinagem filamentar via úmida: bobinas de fibra, tensionador, banho de resina, olhal e mandril em rotação">Schematic of wet filament winding: creel, tensioner, resin bath, carriage and rotating mandrel</title>
               <defs>
                 <marker id="dg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dg-head"/></marker>
                 <pattern id="dg-hatch-a" width="13" height="13" patternUnits="userSpaceOnUse" patternTransform="rotate(-32)"><rect width="13" height="13" class="dg-none"/><line x1="0" y1="6.5" x2="13" y2="6.5" class="dg-hatch-a"/></pattern>
@@ -380,7 +386,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <text x="892" y="296" class="dg-param" text-anchor="end">tan α = ωr / v</text>
             </svg>
           </div>
-          <figcaption data-pt="Esquema da bobinagem filamentar por via úmida. Cada parâmetro que estudo é controlado em um ponto diferente da linha: a pré-tensão no tensionador, o volume de resina no banho e o ângulo de bobinagem α pela relação entre a velocidade periférica do mandril (ωr) e a velocidade do olhal (v).">Schematic of wet filament winding. The parameters I study are set at different points of the line: pretension at the tensioner, resin volume at the resin bath, and the winding angle α by the ratio between the mandrel surface speed ωr and the carriage speed v.</figcaption>
+          <figcaption data-pt="Esquema da bobinagem filamentar via úmida. Cada parâmetro que estudo é ajustado em uma etapa do processo: a pré-tensão, no tensionador; o volume de resina, no banho; e o ângulo de bobinagem α, definido pela razão entre a velocidade tangencial do mandril (ωr) e a velocidade de avanço do olhal (v).">Schematic of wet filament winding. The parameters I study are set at different points of the line: pretension at the tensioner, resin volume at the resin bath, and the winding angle α by the ratio between the mandrel surface speed ωr and the carriage speed v.</figcaption>
         </figure>
         <div class="pair">
           <article class="study">
@@ -391,7 +397,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
             <p class="mini-cap mono" data-pt="Micrografias ópticas das seções transversais das amostras. Clique para ampliar.">Optical micrographs of tow cross-sections. Select to enlarge.</p>
             <div class="label" data-pt="Processo e propriedades">Process and properties</div>
             <h3 data-pt="Parâmetros de bobinagem, microestrutura e resistência">Winding parameters, microstructure and strength</h3>
-            <p data-pt="Medição do ângulo de bobinagem, da pré-tensão e do volume de resina, e caracterização do seu efeito na microestrutura e na resistência à tração de amostras de fibra de carbono consolidadas e impregnadas.">Measuring winding angle, pretension and resin volume, and characterising how they affect the microstructure and tensile strength of consolidated, impregnated carbon fibre tows.</p>
+            <p data-pt="Medição do ângulo de bobinagem, da pré-tensão e do volume de resina e caracterização do efeito desses parâmetros na microestrutura e na resistência à tração de amostras de fibra de carbono consolidadas e impregnadas.">Measuring winding angle, pretension and resin volume, and characterising how they affect the microstructure and tensile strength of consolidated, impregnated carbon fibre tows.</p>
           </article>
           <article class="study">
             <div class="media">
@@ -401,7 +407,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
             <p class="mini-cap mono" data-pt="Mandril com anéis de pinos e uma bobinagem de teste. Clique para ampliar.">Mandrel with pin-rings, and a test winding. Select to enlarge.</p>
             <div class="label" data-pt="Trajetória da máquina">Machine path</div>
             <h3 data-pt="Bobinagem de tubos retangulares">Winding rectangular tubes</h3>
-            <p data-pt="Solução analítica simplificada para gerar a trajetória da máquina na bobinagem filamentar de tubos retangulares com ângulos baixos, usando anéis de pinos.">A simplified analytical solution for generating the machine path when winding rectangular tubes at small winding angles, using pin-rings.</p>
+            <p data-pt="Solução analítica simplificada para gerar a trajetória da máquina na bobinagem filamentar de tubos retangulares com ângulos de bobinagem baixos, usando anéis de pinos.">A simplified analytical solution for generating the machine path when winding rectangular tubes at small winding angles, using pin-rings.</p>
           </article>
         </div>
         <p class="tools mono" data-pt="CATIA · Fusion 360 · AutoCAD · Ansys Mechanical e APDL · MATLAB · Mathcad">CATIA · Fusion 360 · AutoCAD · Ansys Mechanical and APDL · MATLAB · Mathcad</p>
@@ -417,22 +423,22 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="label" data-pt="Publicações">Publications</div>
       <div class="content">
         <h2 data-pt="Trabalhos apresentados em congresso">Conference papers</h2>
-        <p data-pt="Apresentei oralmente os dois trabalhos no 8th Brazilian Conference on Composite Materials (BCCM8), em Foz do Iguaçu, de 16 a 19 de agosto de 2026. Sou primeira autora de um deles e segunda autora do outro.">I presented both extended abstracts orally, one as first author and one as second author, at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, 16 to 19 August 2026.</p>
+        <p data-pt="Apresentei oralmente os dois trabalhos na 8th Brazilian Conference on Composite Materials (BCCM8), em Foz do Iguaçu, de 16 a 19 de agosto de 2026. Sou primeira autora de um deles e segunda autora do outro.">I presented both extended abstracts orally, one as first author and one as second author, at the 8th Brazilian Conference on Composite Materials (BCCM8), Foz do Iguaçu, 16 to 19 August 2026.</p>
         <ul class="pubs">
           <li>
             <span class="t">Influence of Filament Winding Parameters on the Microstructure and Tensile Strength of Consolidated and Impregnated Carbon Fiber Tows</span>
-            <span class="v mono" data-pt="BCCM8 · Segunda autora · Apresentação oral · Agosto de 2026 · &lt;a href=&quot;certificate-bccm8-microstructure.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Certificado (PDF)&lt;/a&gt;">BCCM8 · Second author · Oral presentation · August 2026 · <a href="certificate-bccm8-microstructure.pdf" target="_blank" rel="noopener">Certificate (PDF)</a></span>
+            <span class="v mono" data-pt="BCCM8 · Segunda autora · Apresentação oral · agosto de 2026 · &lt;a href=&quot;certificate-bccm8-microstructure.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Certificado (PDF)&lt;/a&gt;">BCCM8 · Second author · Oral presentation · August 2026 · <a href="certificate-bccm8-microstructure.pdf" target="_blank" rel="noopener">Certificate (PDF)</a></span>
           </li>
           <li>
             <span class="t">A Simplified Analytical Solution for the Machine Path Generation in Filament Winding of Rectangular Tubes</span>
-            <span class="v mono" data-pt="BCCM8 · Primeira autora · Apresentação oral · Agosto de 2026 · &lt;a href=&quot;certificate-bccm8-machine-path.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Certificado (PDF)&lt;/a&gt;">BCCM8 · First author · Oral presentation · August 2026 · <a href="certificate-bccm8-machine-path.pdf" target="_blank" rel="noopener">Certificate (PDF)</a></span>
+            <span class="v mono" data-pt="BCCM8 · Primeira autora · Apresentação oral · agosto de 2026 · &lt;a href=&quot;certificate-bccm8-machine-path.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Certificado (PDF)&lt;/a&gt;">BCCM8 · First author · Oral presentation · August 2026 · <a href="certificate-bccm8-machine-path.pdf" target="_blank" rel="noopener">Certificate (PDF)</a></span>
           </li>
         </ul>
         <div class="photos two portrait">
           <img src="bccm8-1.jpg" alt="Fernanda on stage at the 8th Brazilian Conference on Composite Materials" width="960" height="1280" loading="lazy">
           <img src="bccm8-2.jpg" alt="Fernanda presenting her work at BCCM8" width="960" height="1280" loading="lazy">
         </div>
-        <p class="photo-caption mono" data-pt="Apresentação no BCCM8, Foz do Iguaçu, agosto de 2026">Presenting at BCCM8, Foz do Iguaçu, August 2026</p>
+        <p class="photo-caption mono" data-pt="Apresentação na BCCM8, em Foz do Iguaçu, agosto de 2026">Presenting at BCCM8, Foz do Iguaçu, August 2026</p>
       </div>
     </section>
 
@@ -505,7 +511,7 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="content">
         <h2 data-pt="Formação acadêmica">Education</h2>
         <figure class="timeline">
-          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), two oral presentations at BCCM8 in August 2026." data-pt-aria="Linha do tempo de 2016 a 2028: ensino médio americano de 2016 a 2020; imersão em inglês em 2018; bacharelado na Universidade de Brasília desde 2022, com previsão de conclusão no final de 2027; iniciação científica (PIBIC) de setembro de 2024 a setembro de 2025; LEMA desde 2025, como membro oficial desde 2026; duas apresentações orais no BCCM8 em agosto de 2026."></div>
+          <div id="timeline" class="tl-box" role="img" aria-label="Timeline from 2016 to 2028: U.S. high school 2016 to 2020, English immersion in 2018, B.Sc. at the University of Brasília from 2022 with graduation expected at the end of 2027, research scholarship from September 2024 to September 2025, LEMA from 2025 (official member since 2026), two oral presentations at BCCM8 in August 2026." data-pt-aria="Linha do tempo de 2016 a 2028: ensino médio americano de 2016 a 2020; imersão em inglês em 2018; bacharelado na Universidade de Brasília desde 2022, com previsão de conclusão no final de 2027; iniciação científica (PIBIC) de setembro de 2024 a setembro de 2025; LEMA desde 2025 (membro oficial desde 2026); duas apresentações orais na BCCM8 em agosto de 2026."></div>
           <figcaption class="mono" data-pt="Em escala, ano a ano. Trecho claro: período no LEMA antes de me tornar membro oficial. Tracejado: previsão até a conclusão do curso, no final de 2027.">To scale by year. Light bar: before official LEMA membership. Dashed: expected, up to graduation at the end of 2027.</figcaption>
         </figure>
         <div class="entries">
@@ -522,10 +528,16 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
               <h3 data-pt="Ensino Médio Americano (U.S. High School Diploma)">U.S. High School Diploma</h3>
               <div class="where" data-pt="Mizzou K-12 Online, University of Missouri, EUA">Mizzou K-12 Online, University of Missouri, USA</div>
               <p data-pt="Programa online com disciplinas de artes liberais e STEAM, baseado em pesquisa, debates e projetos sobre questões globais. Disciplinas concluídas em 2020; diploma emitido em fevereiro de 2022, com atraso devido à pandemia de COVID-19.">Online programme combining liberal arts and STEAM coursework, built around research, discussion and project work on global issues. Coursework completed in 2020; the diploma was awarded in February 2022, delayed by the COVID-19 pandemic.</p>
-              <a class="thumb" href="diploma.jpg" target="_blank" rel="noopener">
-                <img src="diploma.jpg" alt="University of Missouri High School diploma awarded to Fernanda Queiroz Sotero Caio" width="1600" height="1268" loading="lazy">
-                <span class="mono" data-pt="Ver diploma (emitido em fevereiro de 2022)">View diploma (awarded February 2022)</span>
-              </a>
+              <div class="thumbs">
+                <a class="thumb portrait" href="hs-graduation.jpg" target="_blank" rel="noopener">
+                  <img src="hs-graduation.jpg" alt="Fernanda holding her University of Missouri High School diploma at her graduation ceremony" width="683" height="911" loading="lazy">
+                  <span class="mono" data-pt="Formatura do ensino médio">High school graduation</span>
+                </a>
+                <a class="thumb" href="diploma.jpg" target="_blank" rel="noopener">
+                  <img src="diploma.jpg" alt="University of Missouri High School diploma awarded to Fernanda Queiroz Sotero Caio" width="1600" height="1268" loading="lazy">
+                  <span class="mono" data-pt="Ver diploma (emitido em fevereiro de 2022)">View diploma (awarded February 2022)</span>
+                </a>
+              </div>
             </div>
             <div class="when mono">2016 – 2020</div>
           </div>
@@ -533,7 +545,17 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
             <div>
               <h3 data-pt="Programa de Imersão em Inglês">English Immersion Programme</h3>
               <div class="where" data-pt="California State University, Long Beach, EUA">California State University, Long Beach, USA</div>
-              <p data-pt="Morei na residência estudantil e tive aulas imersivas de inglês, vivendo a rotina de uma estudante universitária. O programa incluiu aulas de vários cursos, como negócios, engenharia, enfermagem e medicina (onde fiz um parto em um robô simulador), além de assistir a um julgamento no tribunal e participar de atividades culturais e visitas. Recebi certificado de conclusão.">I lived in student housing on campus and took immersive English classes, following the routine of a university student. The programme included sessions from several departments, such as business, engineering, nursing and medicine (where I delivered a baby on a robotic patient simulator), as well as attending a court trial, cultural activities and visits. I received a certificate of completion.</p>
+              <p data-pt="Morei na residência estudantil e tive aulas imersivas de inglês, vivendo a rotina de uma estudante universitária. Também assisti a aulas e apresentações de várias áreas:">I lived in student housing on campus and took immersive English classes, following the routine of a university student. I also attended classes and presentations from several areas:</p>
+              <ul class="plain">
+                <li data-pt="Direito e história dos Estados Unidos">Law and U.S. history</li>
+                <li data-pt="Negócios e engenharia">Business and engineering</li>
+                <li data-pt="Enfermagem e medicina, em que fiz um parto em um robô simulador">Nursing and medicine, where I delivered a baby on a robotic patient simulator</li>
+              </ul>
+              <p data-pt="Também assisti a um julgamento no tribunal e participei de atividades culturais e visitas. Recebi o certificado de conclusão.">I also watched a court trial and took part in cultural activities and visits, and I received a certificate of completion.</p>
+              <figure class="single portrait">
+                <img src="csulb-courthouse.jpg" alt="Fernanda and other programme participants outside the Governor George Deukmejian Courthouse in Long Beach" width="768" height="1024" loading="lazy">
+                <figcaption class="photo-caption mono" data-pt="Visita ao Governor George Deukmejian Courthouse (Superior Court of California), em Long Beach, 2018">Visit to the Governor George Deukmejian Courthouse (Superior Court of California), Long Beach, 2018</figcaption>
+              </figure>
             </div>
             <div class="when mono">2018</div>
           </div>
@@ -545,9 +567,10 @@ footer { border-top: 1px solid var(--rule); padding-block: 22px 40px; color: var
       <div class="label" data-pt="Atividades extracurriculares">Outside the lab</div>
       <div class="content">
         <ul class="plain">
-          <li data-pt="&lt;strong&gt;Patinação&lt;/strong&gt;: campeonatos regionais desde 2024, em duas a três categorias por campeonato, com medalhas de ouro e prata."><strong>Roller skating</strong>: regional championships since 2024, competing in two to three categories, with gold and silver medals.</li>
+          <li data-pt="&lt;strong&gt;Patinação&lt;/strong&gt;: campeonatos regionais desde 2024, em duas ou três categorias por campeonato, com medalhas de ouro e prata."><strong>Roller skating</strong>: regional championships since 2024, competing in two to three categories, with gold and silver medals.</li>
           <li data-pt="&lt;strong&gt;Nado artístico&lt;/strong&gt;: duas medalhas de ouro no São Paulo Opening de 2019, nas provas de quarteto e dueto."><strong>Artistic swimming</strong>: two gold medals at the São Paulo Opening in 2019, in the quartet and duet events.</li>
           <li data-pt="&lt;strong&gt;Modelo das Nações Unidas&lt;/strong&gt;: participação em simulações do comitê da Organização Mundial da Saúde (OMS)."><strong>Model United Nations</strong>: World Health Organization (WHO) committee simulations.</li>
+          <li data-pt="&lt;strong&gt;Simulação de crise internacional&lt;/strong&gt;: participação no III Exercício de Crise Internacional – Arcos 2021, realizado pela Escola Superior de Defesa (ESD), do Ministério da Defesa, para o Curso de Altos Estudos em Defesa, de 22 a 26 de novembro de 2021 (20 horas). &lt;a href=&quot;certificate-esd-arcos2021.jpg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Certificado&lt;/a&gt;"><strong>International crisis simulation</strong>: participant in the 3rd International Crisis Exercise (Arcos 2021), held by the Brazilian Defense College (ESD) of Brazil’s Ministry of Defense, 22 to 26 November 2021 (20 hours). <a href="certificate-esd-arcos2021.jpg" target="_blank" rel="noopener">Certificate</a></li>
           <li data-pt="&lt;strong&gt;Piano&lt;/strong&gt;: aulas em andamento, com dois recitais por ano."><strong>Piano</strong>: ongoing lessons, with two recitals a year.</li>
         </ul>
       </div>
